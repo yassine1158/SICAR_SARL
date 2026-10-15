@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SICAR SARL — Société Ivoirienne des Carrières | Gravier, Sable, Moellons</title>
-  <meta name="description" content="SICAR SARL, Société Ivoirienne des Carrières : production et vente de gravier, sable de concassage, tout-venant et moellons en Côte d'Ivoire.">
+  <meta name="description" content="SICAR SARL, Société Ivoirienne des Carrières : production et vente de gravier, sable de concassage, tout-venant et moellons en Côte d'Ivoire. Devis rapide par WhatsApp.">
   <meta name="theme-color" content="#121418">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="SICAR SARL — Société Ivoirienne des Carrières">
   <meta property="og:description" content="Gravier, sable et moellons de qualité pour vos chantiers.">
   <meta property="og:image" content="assets/img/station-concassage.jpg">
   <link rel="icon" href="assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -23,6 +24,7 @@
     <div class="pl-curtain"><i></i><i></i><i></i></div>
   </div>
   <div id="progress"></div>
+  <div id="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-ring"><em></em></span></div>
 
   <!-- Barre d'infos -->
   <div class="topbar">
@@ -37,18 +39,20 @@
 
   <header id="header">
     <div class="container nav">
-      <a href="#accueil" class="brand">
+      <a href="#accueil" class="brand" aria-label="SICAR SARL — accueil">
         <img class="logo-light" src="assets/img/logo-light.png" alt="SICAR SARL">
-        <img class="logo-color" src="assets/img/logo.png" alt="SICAR SARL">
+        <img class="logo-color" src="assets/img/logo.png" alt="">
       </a>
       <nav id="menu">
-        <a href="#accueil">Accueil</a>
         <a href="#apropos">Entreprise</a>
         <a href="#produits">Produits</a>
+        <a href="#calculateur">Calculateur</a>
         <a href="#processus">Production</a>
         <a href="#galerie">Galerie</a>
         <a href="#contact">Contact</a>
+        <div class="menu-foot"><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a></div>
       </nav>
+      <button class="basket-btn" id="basket-btn" aria-label="Ma demande de devis"><svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b></button>
       <a href="#contact" class="btn btn-sm nav-cta magnetic">Devis gratuit <svg class="ic"><use href="#i-arrow"/></svg></a>
       <button id="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
@@ -64,7 +68,7 @@
     </div>
     <canvas id="dust"></canvas>
     <div class="hero-shade"></div>
-    <div class="hero-grain"></div>
+    <div class="grain"></div>
 
     <div class="container hero-grid">
       <div class="hero-content">
@@ -73,13 +77,13 @@
         <p class="hero-text split-up" data-site="heroText"></p>
         <div class="hero-actions split-up">
           <a href="#produits" class="btn magnetic">Voir nos produits <svg class="ic"><use href="#i-arrow"/></svg></a>
-          <a href="#contact" class="btn btn-outline magnetic">Demander un devis</a>
+          <a href="#calculateur" class="btn btn-outline magnetic"><svg class="ic"><use href="#i-calc"/></svg> Calculer mes besoins</a>
         </div>
       </div>
 
       <aside class="hero-card split-up">
         <div class="hc-head"><span class="live"></span>Production en cours</div>
-        <ul id="hero-products"></ul>
+        <ul id="hero-products"><li class="sk"></li><li class="sk"></li><li class="sk"></li></ul>
         <a href="#contact" class="hc-link">Commander maintenant <svg class="ic"><use href="#i-arrow"/></svg></a>
       </aside>
     </div>
@@ -141,8 +145,61 @@
           <button data-filter="roche">Roche</button>
         </div>
       </div>
-      <div class="products" id="products"><p class="muted">Chargement…</p></div>
+      <div class="products" id="products">
+        <div class="card sk-card"></div><div class="card sk-card"></div><div class="card sk-card"></div>
+      </div>
+      <p class="products-hint reveal"><svg class="ic"><use href="#i-info"/></svg> Cliquez sur un produit pour voir sa fiche, ou sur <b>+</b> pour l'ajouter à votre demande de devis.</p>
     </div>
+  </section>
+
+  <!-- CALCULATEUR -->
+  <section id="calculateur" class="section calc-sec">
+    <div class="container calc">
+      <div class="calc-intro">
+        <span class="eyebrow reveal">Outil gratuit</span>
+        <h2 class="reveal">Combien <br>vous <em>faut-il&nbsp;?</em></h2>
+        <p class="reveal">Entrez les dimensions de votre ouvrage : nous estimons les quantités de granulats nécessaires. Ajoutez-les ensuite à votre demande de devis en un clic.</p>
+        <ul class="calc-notes reveal">
+          <li>Béton : dosage courant ≈ 400 L de sable + 800 L de gravier par m³.</li>
+          <li>Remblai / couche de forme : +25 % pour le compactage.</li>
+          <li>Estimation indicative — notre équipe confirme avec vous.</li>
+        </ul>
+      </div>
+      <form class="calc-box reveal" id="calc" onsubmit="return false">
+        <div class="seg" id="calc-mode">
+          <button type="button" class="on" data-mode="beton">Béton (dalle, fondation)</button>
+          <button type="button" data-mode="remblai">Remblai / route</button>
+        </div>
+        <div class="calc-dims">
+          <label class="num"><span>Longueur</span><input type="number" name="L" value="10" min="0" step="0.1"><i>m</i></label>
+          <label class="num"><span>Largeur</span><input type="number" name="W" value="5" min="0" step="0.1"><i>m</i></label>
+          <label class="num"><span>Épaisseur</span><input type="number" name="H" value="15" min="0" step="1"><i>cm</i></label>
+        </div>
+        <div class="calc-total">Volume de l'ouvrage <b id="calc-vol">7,5 m³</b></div>
+        <div class="calc-res" id="calc-res"></div>
+        <button type="button" class="btn btn-block" id="calc-add"><svg class="ic"><use href="#i-plus"/></svg> Ajouter à ma demande de devis</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- SECTEURS -->
+  <section class="section sectors-sec">
+    <div class="container">
+      <div class="head-row">
+        <div>
+          <span class="eyebrow reveal">Secteurs</span>
+          <h2 class="reveal">Pour tous <br>vos chantiers</h2>
+        </div>
+        <p class="muted reveal head-note">Entreprises du BTP, promoteurs, collectivités ou particuliers : nous fournissons les granulats adaptés à chaque ouvrage.</p>
+      </div>
+      <div class="sectors" id="sectors">
+        <a href="#produits" class="sector reveal" data-img="assets/img/chargeuse.jpg"><b>01</b><h3>Bâtiment</h3><p>Béton, dalles, poteaux, parpaings, enduits.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a href="#produits" class="sector reveal" data-img="assets/img/station-concassage.jpg"><b>02</b><h3>Routes &amp; VRD</h3><p>Couches de forme, de fondation et de base.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a href="#produits" class="sector reveal" data-img="assets/img/extraction.jpg"><b>03</b><h3>Génie civil</h3><p>Ouvrages d'art, enrochements, soutènements.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a href="#produits" class="sector reveal" data-img="assets/img/stock-sable.jpg"><b>04</b><h3>Particuliers</h3><p>Construction de maison, cour, clôture.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="sector-float" id="sector-float"><img alt=""></div>
   </section>
 
   <!-- PROCESSUS -->
@@ -188,13 +245,26 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq" class="section faq-sec">
+    <div class="container faq-wrap">
+      <div>
+        <span class="eyebrow reveal">Questions fréquentes</span>
+        <h2 class="reveal">Vous vous <br><em>demandez…</em></h2>
+        <p class="muted reveal">Une autre question ? Écrivez-nous sur WhatsApp, nous répondons rapidement.</p>
+        <a class="btn btn-wa reveal" id="faq-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Poser ma question</a>
+      </div>
+      <div class="faq" id="faq-list"></div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="section contact-sec">
     <div class="container contact">
       <div class="contact-info">
         <span class="eyebrow reveal">Contact</span>
         <h2 class="reveal">Demandez <br>votre <em>devis</em></h2>
-        <p class="reveal">Indiquez le produit et la quantité souhaitée, nous vous répondons rapidement.</p>
+        <p class="reveal">Indiquez les produits et quantités souhaités, nous vous répondons rapidement.</p>
         <ul class="info-list">
           <li class="reveal"><svg class="ic"><use href="#i-phone"/></svg><div><small>Téléphone</small><a data-site-href="tel" data-site="phone"></a></div></li>
           <li class="reveal"><svg class="ic"><use href="#i-mail"/></svg><div><small>E-mail</small><a data-site-href="mailto" data-site="email"></a></div></li>
@@ -202,18 +272,26 @@
           <li class="reveal"><svg class="ic"><use href="#i-clock"/></svg><div><small>Horaires</small><span data-site="hours"></span></div></li>
         </ul>
       </div>
-      <form id="quote" class="quote reveal">
-        <h3>Demande de devis</h3>
-        <div class="row">
-          <label class="field"><input name="nom" required placeholder=" "><span>Nom / Entreprise</span></label>
-          <label class="field"><input name="tel" type="tel" required placeholder=" "><span>Téléphone</span></label>
+      <form id="quote" class="quote reveal" novalidate>
+        <div class="quote-head"><h3>Demande de devis</h3><span class="steps-ind"><i class="on"></i><i></i></span></div>
+
+        <div class="q-items">
+          <div class="q-items-head"><span>Produits demandés</span><button type="button" class="link" id="q-clear">Tout retirer</button></div>
+          <ul id="q-list"></ul>
+          <div class="q-add">
+            <label class="field"><select id="q-product"></select><span>Ajouter un produit</span></label>
+            <label class="field q-qty"><input id="q-qty" type="number" min="1" placeholder=" " value="10"><span>Quantité</span></label>
+            <button type="button" class="btn btn-dark btn-square" id="q-add" aria-label="Ajouter"><svg class="ic"><use href="#i-plus"/></svg></button>
+          </div>
         </div>
+
         <div class="row">
-          <label class="field"><select name="produit" id="quote-product"></select><span>Produit</span></label>
-          <label class="field"><input name="qte" placeholder=" "><span>Quantité (ex : 50 m³)</span></label>
+          <label class="field"><input name="nom" required placeholder=" " autocomplete="name"><span>Nom / Entreprise</span></label>
+          <label class="field"><input name="tel" type="tel" required placeholder=" " autocomplete="tel"><span>Téléphone</span></label>
         </div>
-        <label class="field"><input name="lieu" placeholder=" "><span>Lieu de livraison</span></label>
-        <label class="field"><textarea name="msg" rows="3" placeholder=" "></textarea><span>Message</span></label>
+        <label class="field"><input name="lieu" placeholder=" "><span>Lieu de livraison (ville / chantier)</span></label>
+        <label class="field"><textarea name="msg" rows="3" placeholder=" "></textarea><span>Message (optionnel)</span></label>
+        <p class="form-err" id="form-err" role="alert"></p>
         <div class="row">
           <button class="btn btn-wa" type="submit" data-via="whatsapp"><svg class="ic"><use href="#i-wa"/></svg> Envoyer par WhatsApp</button>
           <button class="btn btn-dark" type="submit" data-via="email"><svg class="ic"><use href="#i-mail"/></svg> Envoyer par e-mail</button>
@@ -224,12 +302,15 @@
   </section>
 
   <footer>
+    <a href="#contact" class="big-cta">
+      <span class="bc-track"><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
     <div class="container foot">
       <div class="foot-brand">
         <img src="assets/img/logo-light.png" alt="SICAR SARL">
         <p>Production et vente de granulats : gravier, sable et moellons pour le bâtiment, les routes et le génie civil.</p>
       </div>
-      <div><h4>Navigation</h4><a href="#apropos">Entreprise</a><a href="#produits">Produits</a><a href="#processus">Production</a><a href="#galerie">Galerie</a><a href="#contact">Contact</a></div>
+      <div><h4>Navigation</h4><a href="#apropos">Entreprise</a><a href="#produits">Produits</a><a href="#calculateur">Calculateur</a><a href="#galerie">Galerie</a><a href="#faq">FAQ</a></div>
       <div><h4>Produits</h4><div id="foot-products"></div></div>
       <div><h4>Contact</h4><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a><span data-site="address"></span></div>
     </div>
@@ -243,11 +324,39 @@
   <a id="wa" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
   <button id="totop" aria-label="Haut de page"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18"/></svg><span>↑</span></button>
 
+  <!-- Fiche produit -->
+  <div id="pmodal" class="pmodal" aria-hidden="true">
+    <div class="pm-backdrop" data-close></div>
+    <article class="pm-panel" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+      <button class="pm-close" data-close aria-label="Fermer">×</button>
+      <div class="pm-img"><img id="pm-img" alt=""><span class="pm-grain" id="pm-grain"></span></div>
+      <div class="pm-body">
+        <span class="badge" id="pm-cat"></span>
+        <h3 id="pm-title"></h3>
+        <p id="pm-desc"></p>
+        <dl class="pm-specs" id="pm-specs"></dl>
+        <div class="tags" id="pm-tags"></div>
+        <div class="pm-order">
+          <label class="num"><span>Quantité</span><input type="number" id="pm-qty" min="1" value="10"><i id="pm-unit">m³</i></label>
+          <button class="btn" id="pm-add"><svg class="ic"><use href="#i-plus"/></svg> Ajouter au devis</button>
+        </div>
+        <a class="pm-wa" id="pm-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Commander directement sur WhatsApp</a>
+      </div>
+    </article>
+  </div>
+
   <div id="lightbox"><button class="lb-close" aria-label="Fermer">×</button><button class="lb-prev" aria-label="Précédent">‹</button><img alt=""><span class="lb-count"></span><button class="lb-next" aria-label="Suivant">›</button></div>
+  <div id="toast" role="status"></div>
 
   <!-- Icônes -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M6 3.5h12v17H6z M9 8h6M9 12h6M9 16h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24"><path d="M5 3h14v18H5z M8 6.5h8v3H8z M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5M12 7.5v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 20 9.5 8l4 6.5L16 11l5 9z M8 12.5l1.5 1.5 1.5-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2.8 20 6v6c0 4.6-3.3 8-8 9.2C7.3 20 4 16.6 4 12V6z M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>

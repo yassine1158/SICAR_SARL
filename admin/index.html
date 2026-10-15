@@ -41,6 +41,7 @@
         <button class="active" data-tab="products">Produits</button>
         <button data-tab="settings">Informations</button>
         <button data-tab="gallery">Galerie</button>
+        <button data-tab="faq">FAQ</button>
       </nav>
       <div class="top-actions">
         <a href="../" target="_blank" class="btn btn-light">Voir le site ↗</a>
@@ -77,6 +78,18 @@
           <label>Localisation sur la carte (ville, lieu ou coordonnées)<input name="mapQuery" placeholder="Abidjan, Côte d'Ivoire"></label>
           <fieldset class="full"><legend>Chiffres clés</legend><div id="stats-edit"></div></fieldset>
         </form>
+      </div>
+
+      <!-- FAQ -->
+      <div class="tab" id="tab-faq" hidden>
+        <div class="bar">
+          <h2>Questions fréquentes</h2>
+          <div>
+            <button id="faq-add" class="btn">+ Ajouter une question</button>
+            <button id="save-faq" class="btn btn-green">Publier les modifications</button>
+          </div>
+        </div>
+        <div id="faq-edit" class="list"></div>
       </div>
 
       <!-- Galerie -->
