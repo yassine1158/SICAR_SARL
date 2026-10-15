@@ -16,7 +16,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>try{if(sessionStorage.getItem("sicar_seen"))document.documentElement.classList.add("seen")}catch(e){}</script>
+  <script>
+    /* Téléphone : version une page (mobile.html) — ordinateur : version multi-pages */
+    (function(){
+      var page="faq", mobile=matchMedia("(max-width: 767px), (pointer: coarse) and (max-height: 500px)").matches;
+      var sections={accueil:"",entreprise:"#entreprise",produits:"#produits",production:"#production",galerie:"#galerie",faq:"#faq",contact:"#contact"};
+      if(page==="404") return;
+      if(mobile && page!=="onepage"){
+        var isProduct=/produit\.html$/.test(location.pathname);
+        location.replace("mobile.html"+(isProduct?location.search:"")+(sections[page]||""));
+      } else if(!mobile && page==="onepage"){
+        var id=new URLSearchParams(location.search).get("id"), h=location.hash.slice(1);
+        var files={entreprise:"entreprise.html",produits:"produits.html",production:"production.html",galerie:"galerie.html",faq:"faq.html",contact:"contact.html"};
+        location.replace(id?"produit.html?id="+encodeURIComponent(id):(files[h]||"index.html"));
+      }
+    })();
+    try{if(sessionStorage.getItem("sicar_seen"))document.documentElement.classList.add("seen")}catch(e){}
+  </script>
 </head>
 <body data-page="faq">
   <!-- Préchargement (1re visite) / transition entre pages -->

@@ -13,6 +13,7 @@
   };
   const productURL = (p) => "produit.html?id=" + encodeURIComponent(p.id || p.name);
   const body = document.body;
+  const onePage = body.dataset.page === "onepage"; // version téléphone (mobile.html)
   let site = {}, products = [];
 
   /* =========================================================
@@ -53,7 +54,7 @@
     const t = $("#toast"); t.innerHTML = `<i>✓</i><span>${html}</span>`; t.classList.add("show");
     clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 3800);
   };
-  const addedToast = (what) => toast(`${what} <a href="contact.html#quote">Voir mon devis</a>`);
+  const addedToast = (what) => toast(`${what} <a href="${onePage ? "#contact" : "contact.html#quote"}">Voir mon devis</a>`);
 
   /* ---------- verrouillage du défilement ---------- */
   const locks = new Set();
@@ -82,6 +83,11 @@
     prog.style.transform = `scaleX(${k})`;
     totop.classList.toggle("show", y > 700);
     totop.style.setProperty("--off", 113.1 * (1 - k));
+    if (onePage) {
+      let cur = "accueil";
+      $$("main section[id]").forEach((sec) => { if (y >= sec.offsetTop - 140) cur = sec.id; });
+      $$("[data-nav]").forEach((a) => a.classList.toggle("current", a.dataset.nav === cur));
+    }
     if (!reduce) {
       paras.forEach((el) => { const r = el.parentElement.getBoundingClientRect(); el.style.transform = `translate3d(0,${(r.top + r.height / 2 - innerHeight / 2) * +el.dataset.speed}px,0)`; });
       if (heroMedia && y < innerHeight) heroMedia.style.transform = `translate3d(0,${y * 0.3}px,0)`;
@@ -102,6 +108,7 @@
   const burger = $("#burger"), menu = $("#menu");
   const toggleMenu = (open) => { burger.classList.toggle("open", open); menu.classList.toggle("open", open); lock("menu", open); };
   burger.onclick = () => toggleMenu(!menu.classList.contains("open"));
+  if (onePage) $$("#menu a").forEach((a) => a.addEventListener("click", () => toggleMenu(false)));
 
   /* ---------- diaporama (accueil) ---------- */
   const slides = $$(".slide"), snav = $("#slide-nav");
@@ -380,6 +387,7 @@
     if (tk) { const names = list.map((p) => `<span>${esc(p.name)}</span>`).join(""); tk.innerHTML = names + names + names + names; }
     if ($("#filters")) setupFilters(list);
     if ($("#pp")) renderProductPage(list);
+    if (onePage && currentId) { const p = list.find((x) => (x.id || x.name) === currentId); if (p) openProduct(p); }
     renderBasket();
   }).catch(() => { const b = $("#products"); if (b) b.innerHTML = '<p class="muted">Impossible de charger les produits.</p>'; });
 
@@ -400,7 +408,7 @@
         if (show) { c.classList.remove("in"); requestAnimationFrame(() => requestAnimationFrame(() => c.classList.add("in"))); }
       });
     };
-    on("#filters", "click", (e) => { const b = e.target.closest("button"); if (!b) return; apply(b.dataset.filter); history.replaceState(null, "", b.dataset.filter === "all" ? location.pathname : "#" + b.dataset.filter); });
+    on("#filters", "click", (e) => { const b = e.target.closest("button"); if (!b) return; apply(b.dataset.filter); if (!onePage) history.replaceState(null, "", b.dataset.filter === "all" ? location.pathname : "#" + b.dataset.filter); });
     const h = location.hash.slice(1); apply(cats.has(h) ? h : "all");
   }
 
@@ -429,6 +437,43 @@
     setWa(); on("#pp-qty", "input", setWa); setTimeout(setWa, 1500);
     on("#pp-add", "click", () => { addToBasket(p.name, $("#pp-qty").value); addedToast(`<b>${esc(p.name)}</b> ajouté à votre devis.`); });
     observe($("#pp"));
+  }
+
+  /* =========================================================
+     Fiche produit en panneau latéral (version une page)
+     ========================================================= */
+  const pm = $("#pmodal"); let pmProduct = null, pmReturn = null;
+  function openProduct(p) {
+    if (!pm) return;
+    pmProduct = p; pmReturn = document.activeElement;
+    $("#pm-img").src = p.image || "assets/img/stock-sable.jpg"; $("#pm-img").alt = p.name;
+    $("#pm-grain").innerHTML = grainHTML(p.granulometrie);
+    $("#pm-cat").textContent = p.category; $("#pm-cat").className = "badge " + p.category;
+    $("#pm-title").textContent = p.name;
+    $("#pm-desc").textContent = p.description || "";
+    $("#pm-specs").innerHTML = [
+      ["Granulométrie", esc(p.granulometrie || "—")],
+      ["Catégorie", esc(p.category)],
+      ["Prix", p.price ? `${esc(p.price)} FCFA / ${esc(p.unit || "m³")}` : "Sur devis"],
+      ["Disponibilité", p.available === false ? "Rupture" : "En stock", p.available === false ? "ko" : "ok"],
+    ].map(([k, v, c]) => `<div><dt>${k}</dt><dd class="${c || ""}">${v}</dd></div>`).join("");
+    $("#pm-tags").innerHTML = (p.usages || []).map((u) => `<span>${esc(u)}</span>`).join("");
+    $("#pm-unit").textContent = p.unit || "m³"; $("#pm-qty").value = 10;
+    $("#pm-wa").href = `https://wa.me/${site.whatsapp || ""}?text=${encodeURIComponent(`Bonjour SICAR SARL, je souhaite un devis pour : ${p.name}.`)}`;
+    pm.classList.add("open"); pm.setAttribute("aria-hidden", "false"); lock("pm", true);
+    setTimeout(() => $(".pm-close", pm).focus({ preventScroll: true }), 50);
+  }
+  const closeProduct = () => { pm.classList.remove("open"); pm.setAttribute("aria-hidden", "true"); lock("pm", false); pmReturn?.focus?.({ preventScroll: true }); };
+  if (pm) {
+    $$("[data-close]", pm).forEach((b) => (b.onclick = closeProduct));
+    $("#pm-add").onclick = () => { addToBasket(pmProduct.name, $("#pm-qty").value); closeProduct(); addedToast(`<b>${esc(pmProduct.name)}</b> ajouté à votre devis.`); };
+    addEventListener("keydown", (e) => { if (e.key === "Escape" && pm.classList.contains("open")) closeProduct(); });
+    // les liens vers produit.html ouvrent le panneau au lieu de changer de page
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest('a[href^="produit.html"]'); if (!a) return;
+      const id = new URL(a.href).searchParams.get("id"), p = products.find((x) => (x.id || x.name) === id);
+      if (p) { e.preventDefault(); openProduct(p); }
+    }, true);
   }
 
   /* =========================================================

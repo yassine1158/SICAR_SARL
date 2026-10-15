@@ -723,3 +723,6 @@ body.loaded .page-hero h1 .w>span{transform:none}
 @keyframes wordUp{from{transform:translateY(105%)}}
 [hidden]{display:none!important}
 .page-hero h1 .w:first-child:last-child>span{color:#fff}
+.products-hint{display:block;text-wrap:balance}
+.products-hint .ic{margin-right:6px}
+.products-hint b{margin:0 2px;vertical-align:-.1em}

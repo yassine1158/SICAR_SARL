@@ -18,6 +18,13 @@ ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
 
 
+ONEPAGE_LINKS = [
+    ("contact.html#quote", "#contact"), ("index.html", "#accueil"), ("entreprise.html", "#entreprise"),
+    ("produits.html", "#produits"), ("production.html", "#production"), ("galerie.html", "#galerie"),
+    ("faq.html", "#faq"), ("contact.html", "#contact"),
+]
+
+
 def read(path):
     return (TOOLS / path).read_text(encoding="utf-8")
 
@@ -34,7 +41,12 @@ def main():
                     .replace("{{desc}}", html.escape(meta["desc"]))
                     .replace("{{page}}", meta["page"])
                     .replace("{{extra_head}}", meta.get("extra_head", "")))
-        out = page + header + body + footer
+        hdr, ftr = header, footer
+        if meta["page"] == "onepage":
+            # version une page (téléphone) : les liens du menu deviennent des ancres
+            for href, anchor in ONEPAGE_LINKS:
+                hdr, ftr = hdr.replace(f'href="{href}"', f'href="{anchor}"'), ftr.replace(f'href="{href}"', f'href="{anchor}"')
+        out = page + hdr + body + ftr
         (ROOT / src.name).write_text(out, encoding="utf-8")
         print("✓", src.name)
 
