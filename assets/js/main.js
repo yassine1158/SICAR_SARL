@@ -14,7 +14,7 @@
   const productURL = (p) => "produit.html?id=" + encodeURIComponent(p.id || p.name);
   const body = document.body;
   const onePage = body.dataset.page === "onepage"; // version téléphone (mobile.html)
-  let site = {}, products = [];
+  let site = {}, products = [], onSiteReady = [];
 
   /* =========================================================
      Préchargement (1re visite) et transitions entre pages
@@ -294,6 +294,7 @@
     }
     if ($("#faq-list")) renderFaq(d.faq || []);
     seo(d);
+    onSiteReady.forEach((f) => f()); onSiteReady = null;
     onScroll();
   }).catch(console.error);
 
@@ -398,7 +399,7 @@
     addEventListener("resize", movePill);
     const cats = new Set(list.map((p) => p.category));
     $$("#filters button").forEach((b) => { if (b.dataset.filter !== "all" && !cats.has(b.dataset.filter)) b.remove(); });
-    const titles = { all: "Tous les produits", gravier: "Graviers", sable: "Sables", roche: "Roche & moellons" };
+    const titles = { all: "Tous les produits", gravier: "Graviers", sable: "Sables", grave: "Graves & tout-venant", roche: "Roche & moellons" };
     const apply = (f) => {
       $$("#filters button").forEach((x) => x.classList.toggle("active", x.dataset.filter === f)); movePill();
       const t = $("#cat-title"); if (t) t.textContent = titles[f] || titles.all;
@@ -434,7 +435,7 @@
     $("#pp-tags").innerHTML = (p.usages || []).map((u) => `<span>${esc(u)}</span>`).join("") || '<span>Tous usages</span>';
     $("#pp-unit").textContent = p.unit || "m³";
     const setWa = () => ($("#pp-wa").href = `https://wa.me/${site.whatsapp || ""}?text=${encodeURIComponent(`Bonjour SICAR SARL, je souhaite un devis pour : ${p.name} — ${$("#pp-qty").value} ${p.unit || "m³"}.`)}`);
-    setWa(); on("#pp-qty", "input", setWa); setTimeout(setWa, 1500);
+    setWa(); on("#pp-qty", "input", setWa); if (onSiteReady) onSiteReady.push(setWa);
     on("#pp-add", "click", () => { addToBasket(p.name, $("#pp-qty").value); addedToast(`<b>${esc(p.name)}</b> ajouté à votre devis.`); });
     observe($("#pp"));
   }
@@ -459,7 +460,8 @@
     ].map(([k, v, c]) => `<div><dt>${k}</dt><dd class="${c || ""}">${v}</dd></div>`).join("");
     $("#pm-tags").innerHTML = (p.usages || []).map((u) => `<span>${esc(u)}</span>`).join("");
     $("#pm-unit").textContent = p.unit || "m³"; $("#pm-qty").value = 10;
-    $("#pm-wa").href = `https://wa.me/${site.whatsapp || ""}?text=${encodeURIComponent(`Bonjour SICAR SARL, je souhaite un devis pour : ${p.name}.`)}`;
+    const setPmWa = () => ($("#pm-wa").href = `https://wa.me/${site.whatsapp || ""}?text=${encodeURIComponent(`Bonjour SICAR SARL, je souhaite un devis pour : ${p.name}.`)}`);
+    setPmWa(); if (onSiteReady) onSiteReady.push(setPmWa);
     pm.classList.add("open"); pm.setAttribute("aria-hidden", "false"); lock("pm", true);
     setTimeout(() => $(".pm-close", pm).focus({ preventScroll: true }), 50);
   }

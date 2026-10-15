@@ -196,7 +196,7 @@ body.loaded .split-up{opacity:1;transform:none}
 .grain small{font-size:1rem;font-weight:600;opacity:.75;margin-left:4px}
 .badge{position:absolute;top:16px;left:16px;z-index:1;background:rgba(255,255,255,.92);color:var(--ink);font:700 .7rem var(--body);text-transform:uppercase;letter-spacing:.14em;padding:6px 12px;border-radius:100px;display:flex;align-items:center;gap:7px}
 .badge::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
-.badge.sable::before{background:#d2a65a}.badge.roche::before{background:var(--green)}
+.badge.sable::before{background:#d2a65a}.badge.grave::before{background:#8a8f98}.badge.roche::before{background:var(--green)}
 .stock{position:absolute;top:16px;right:16px;z-index:1;background:var(--red);color:#fff;font:700 .7rem var(--body);text-transform:uppercase;letter-spacing:.1em;padding:6px 12px;border-radius:100px}
 .card-body{padding:24px 24px 22px;display:flex;flex-direction:column;flex:1}
 .card-body h3{font-size:1.75rem;margin-bottom:.55rem}
@@ -726,3 +726,6 @@ body.loaded .page-hero h1 .w>span{transform:none}
 .products-hint{display:block;text-wrap:balance}
 .products-hint .ic{margin-right:6px}
 .products-hint b{margin:0 2px;vertical-align:-.1em}
+/* le bouton WhatsApp flottant ne doit rien masquer */
+.foot-bottom{padding-right:96px}
+@media (max-width:900px){.scroll-cue{display:none}}
