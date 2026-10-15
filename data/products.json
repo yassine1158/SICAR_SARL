@@ -17,23 +17,6 @@
     "featured": true
   },
   {
-    "id": "sable-fin-0-2",
-    "name": "Sable fin 0/2",
-    "category": "sable",
-    "granulometrie": "0/2 mm",
-    "description": "Sable fin de concassage pour enduits lisses, joints, chapes et pose de pavés.",
-    "usages": [
-      "Enduits",
-      "Chapes",
-      "Pose de pavés"
-    ],
-    "price": "",
-    "unit": "m³",
-    "image": "assets/img/stock-sable.jpg",
-    "available": true,
-    "featured": false
-  },
-  {
     "id": "gravier-5-10",
     "name": "Gravier 5/10",
     "category": "gravier",
