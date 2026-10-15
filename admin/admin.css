@@ -105,3 +105,7 @@ dialog h3{font-size:2rem}
   .stat-row{grid-template-columns:70px 70px 1fr}
   .bar h2{font-size:2rem}
 }
+
+.faq-item{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;grid-template-columns:1fr auto;gap:12px;animation:in .35s var(--ease) both}
+.faq-item .fields{display:grid;gap:10px}
+.faq-item .acts{display:flex;flex-direction:column;gap:6px}

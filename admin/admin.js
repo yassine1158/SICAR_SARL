@@ -70,7 +70,7 @@
       repo.branch = info.default_branch || repo.branch;
       [products, site] = await Promise.all([readJSON("data/products.json"), readJSON("data/site.json")]);
       $("#login").hidden = true; $("#app").hidden = false;
-      renderProducts(); renderSettings(); renderGallery();
+      renderProducts(); renderSettings(); renderGallery(); renderFaq();
     } catch (e) {
       $("#login").hidden = false; $("#app").hidden = true;
       $("#login-err").textContent = e.status === 401 ? "Jeton invalide ou expiré." : e.message;
@@ -181,6 +181,37 @@
     $$("[data-s]").forEach((el) => { const s = site.stats[+el.dataset.s]; s[el.dataset.k] = el.dataset.k === "value" ? Number(el.value) || 0 : el.value; });
     busy("Publication des informations…");
     await writeJSON("data/site.json", site, "Mise à jour des informations du site");
+  });
+
+  /* ---------- FAQ ---------- */
+  function renderFaq() {
+    const f = site.faq || (site.faq = []);
+    $("#faq-edit").innerHTML = f.map((x, i) => `<div class="faq-item">
+      <div class="fields">
+        <label>Question<input data-f="${i}" data-k="q" value="${esc(x.q)}"></label>
+        <label>Réponse<textarea data-f="${i}" data-k="a" rows="3">${esc(x.a)}</textarea></label>
+      </div>
+      <div class="acts">
+        <button class="btn-icon" data-fa="up" data-i="${i}" title="Monter">↑</button>
+        <button class="btn-icon" data-fa="down" data-i="${i}" title="Descendre">↓</button>
+        <button class="btn-icon" data-fa="del" data-i="${i}" title="Supprimer">🗑</button>
+      </div></div>`).join("") || "<p>Aucune question. La section FAQ est masquée sur le site.</p>";
+  }
+  $("#faq-edit").addEventListener("input", (e) => { const el = e.target; if (el.dataset.f !== undefined) { site.faq[+el.dataset.f][el.dataset.k] = el.value; markDirty(); } });
+  $("#faq-edit").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-fa]"); if (!b) return;
+    const f = site.faq, i = +b.dataset.i;
+    if (b.dataset.fa === "del" && confirm("Supprimer cette question ?")) f.splice(i, 1);
+    if (b.dataset.fa === "up" && i > 0) [f[i - 1], f[i]] = [f[i], f[i - 1]];
+    if (b.dataset.fa === "down" && i < f.length - 1) [f[i + 1], f[i]] = [f[i], f[i + 1]];
+    renderFaq(); markDirty();
+  });
+  $("#faq-add").onclick = () => { site.faq.push({ q: "", a: "" }); renderFaq(); markDirty(); $("#faq-edit .faq-item:last-child input").focus(); };
+  $("#save-faq").onclick = () => publish(async () => {
+    site.faq = site.faq.filter((x) => x.q.trim());
+    busy("Publication de la FAQ…");
+    await writeJSON("data/site.json", site, "Mise à jour de la FAQ");
+    renderFaq();
   });
 
   /* ---------- galerie ---------- */

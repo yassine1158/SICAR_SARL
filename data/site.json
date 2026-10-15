@@ -5,10 +5,26 @@
   "heroText": "Extraction, concassage et livraison de gravier, sable et moellons pour vos chantiers de bâtiment, routes et génie civil.",
   "about": "SICAR SARL exploite sa propre carrière et sa station de concassage. Nous produisons des granulats calibrés et contrôlés, disponibles en grande quantité, avec un parc d'engins prêt à charger et livrer vos camions.",
   "stats": [
-    { "value": 5, "suffix": "+", "label": "Calibres de granulats" },
-    { "value": 100, "suffix": "%", "label": "Roche concassée sur site" },
-    { "value": 7, "suffix": "j/7", "label": "Chargement sur rendez-vous" },
-    { "value": 24, "suffix": "h", "label": "Réponse aux devis" }
+    {
+      "value": 5,
+      "suffix": "+",
+      "label": "Calibres de granulats"
+    },
+    {
+      "value": 100,
+      "suffix": "%",
+      "label": "Roche concassée sur site"
+    },
+    {
+      "value": 7,
+      "suffix": "j/7",
+      "label": "Chargement sur rendez-vous"
+    },
+    {
+      "value": 24,
+      "suffix": "h",
+      "label": "Réponse aux devis"
+    }
   ],
   "phone": "+225 00 00 00 00 00",
   "whatsapp": "2250000000000",
@@ -22,5 +38,27 @@
     "assets/img/chargeuse.jpg",
     "assets/img/convoyeur.jpg",
     "assets/img/stock-sable.jpg"
+  ],
+  "faq": [
+    {
+      "q": "Comment passer commande ?",
+      "a": "Ajoutez les produits souhaités à votre demande de devis (depuis le catalogue ou le calculateur), puis envoyez-la par WhatsApp ou par e-mail. Vous pouvez aussi nous appeler directement."
+    },
+    {
+      "q": "Livrez-vous sur les chantiers ?",
+      "a": "Oui, la livraison est possible. Indiquez le lieu de votre chantier dans la demande de devis : nous vous communiquons les conditions et le tarif de transport."
+    },
+    {
+      "q": "Puis-je venir charger moi-même ?",
+      "a": "Oui. Nos engins chargent vos camions directement sur site, aux horaires d'ouverture. Prévenez-nous à l'avance pour organiser le chargement."
+    },
+    {
+      "q": "Quels granulats choisir pour un béton ?",
+      "a": "Pour un béton courant, on associe un sable de concassage et un gravier (par exemple 5/10 ou 10/15). Notre calculateur vous donne une estimation des quantités ; notre équipe peut vous conseiller selon votre ouvrage."
+    },
+    {
+      "q": "Quelle est la différence entre m³ et tonne ?",
+      "a": "Le m³ mesure un volume, la tonne un poids. Selon le matériau, 1 m³ de granulats pèse environ 1,4 à 1,7 tonne. Nous précisons l'unité de vente de chaque produit dans sa fiche."
+    }
   ]
 }
