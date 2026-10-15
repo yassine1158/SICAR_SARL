@@ -1,0 +1,149 @@
+<!--{"title":"SICAR SARL — Société Ivoirienne des Carrières | Gravier, Sable, Moellons","desc":"SICAR SARL, Société Ivoirienne des Carrières : production et vente de gravier, sable de concassage, tout-venant et moellons en Côte d'Ivoire. Devis rapide par WhatsApp.","page":"accueil"}-->
+    <section class="hero">
+      <div class="hero-media">
+        <div class="slide active" style="background-image:url(assets/img/station-concassage.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/extraction.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/convoyeur.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/stock-sable.jpg)"></div>
+      </div>
+      <canvas id="dust"></canvas>
+      <div class="hero-shade"></div>
+      <div class="grain"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="kicker split-up"><i class="flag"><b></b><b></b><b></b></i><span data-site="tagline">Société Ivoirienne des Carrières</span></span>
+          <h1 class="hero-title" data-site="heroTitle" data-split>Granulats de qualité pour bâtir la Côte d'Ivoire</h1>
+          <p class="hero-text split-up" data-site="heroText"></p>
+          <div class="hero-actions split-up">
+            <a href="produits.html" class="btn magnetic">Voir nos produits <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a href="calculateur.html" class="btn btn-outline magnetic"><svg class="ic"><use href="#i-calc"/></svg> Calculer mes besoins</a>
+          </div>
+        </div>
+        <aside class="hero-card split-up">
+          <div class="hc-head"><span class="live"></span>Production en cours</div>
+          <ul id="hero-products"><li class="sk"></li><li class="sk"></li><li class="sk"></li></ul>
+          <a href="contact.html#quote" class="hc-link">Commander maintenant <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </aside>
+      </div>
+
+      <div class="hero-bottom container">
+        <div class="slide-nav" id="slide-nav"></div>
+        <a href="#apropos" class="scroll-cue">Défiler <span></span></a>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+    <section id="apropos" class="section about-sec">
+      <span class="bg-word" data-speed="-0.15">CARRIÈRE</span>
+      <div class="container about">
+        <div class="about-media">
+          <div class="mask-reveal main-img"><img src="assets/img/extraction.jpg" alt="Extraction de roche en carrière" loading="lazy"></div>
+          <div class="mask-reveal sub-img" data-speed="0.08"><img src="assets/img/chargeuse.jpg" alt="Chargeuse sur stock de granulats" loading="lazy"></div>
+          <div class="seal">
+            <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+              <text><textPath href="#circ">SOCIÉTÉ IVOIRIENNE DES CARRIÈRES • SICAR SARL • </textPath></text></svg>
+            <img src="assets/img/favicon.png" alt="">
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="eyebrow reveal">L'entreprise</span>
+          <h2 class="reveal">De la roche brute <br>au <em>chantier fini.</em></h2>
+          <p class="lead reveal" data-site="about"></p>
+          <div class="features">
+            <div class="feat reveal"><svg class="ic"><use href="#i-mountain"/></svg><div><h4>Carrière propre</h4><p>Extraction maîtrisée sur notre gisement.</p></div></div>
+            <div class="feat reveal"><svg class="ic"><use href="#i-gear"/></svg><div><h4>Station de concassage</h4><p>Concassage et criblage sur site.</p></div></div>
+          </div>
+          <a href="entreprise.html" class="more-link reveal">Découvrir l'entreprise <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-band"><div class="container stats" id="stats"></div></section>
+
+    <section class="section products-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Catalogue</span>
+            <h2 class="reveal">Nos granulats</h2>
+          </div>
+          <a href="produits.html" class="more-link reveal">Tout le catalogue <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="products" id="products" data-limit="3">
+          <div class="card sk-card"></div><div class="card sk-card"></div><div class="card sk-card"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calc-promo">
+      <div class="container cp-in">
+        <div class="cp-icon reveal"><svg class="ic"><use href="#i-calc"/></svg></div>
+        <div class="reveal">
+          <h2>Combien vous faut-il ?</h2>
+          <p>Calculez en quelques secondes les quantités de sable et de gravier pour votre dalle, vos fondations ou votre route.</p>
+        </div>
+        <a href="calculateur.html" class="btn btn-white magnetic reveal">Ouvrir le calculateur <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <section class="section sectors-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Secteurs</span>
+            <h2 class="reveal">Pour tous <br>vos chantiers</h2>
+          </div>
+          <p class="muted reveal head-note">Entreprises du BTP, promoteurs, collectivités ou particuliers : nous fournissons les granulats adaptés à chaque ouvrage.</p>
+        </div>
+        <div class="sectors" id="sectors">
+          <a href="produits.html" class="sector reveal" data-img="assets/img/chargeuse.jpg"><b>01</b><h3>Bâtiment</h3><p>Béton, dalles, poteaux, parpaings, enduits.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/station-concassage.jpg"><b>02</b><h3>Routes &amp; VRD</h3><p>Couches de forme, de fondation et de base.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/extraction.jpg"><b>03</b><h3>Génie civil</h3><p>Ouvrages d'art, enrochements, soutènements.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/stock-sable.jpg"><b>04</b><h3>Particuliers</h3><p>Construction de maison, cour, clôture.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="sector-float" id="sector-float"><img alt=""></div>
+    </section>
+
+    <section class="section process-sec">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow reveal">Production</span>
+          <h2 class="reveal">Quatre étapes, <em>une qualité constante</em></h2>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="tl-line"><span id="tl-fill"></span></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-mountain"/></svg></div><b>01</b><h3>Extraction</h3><p>Abattage et extraction de la roche sur la carrière.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-gear"/></svg></div><b>02</b><h3>Concassage</h3><p>Réduction de la roche en station de concassage.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-grid"/></svg></div><b>03</b><h3>Criblage</h3><p>Tri par cribles pour des calibres précis.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-truck"/></svg></div><b>04</b><h3>Livraison</h3><p>Stockage par calibre, chargement et livraison.</p></div>
+        </div>
+        <div class="center-more reveal"><a href="production.html" class="more-link">Découvrir notre production <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-bg" data-speed="0.25" style="background-image:url(assets/img/convoyeur.jpg)"></div>
+      <div class="container cta-in">
+        <h2 class="reveal">Un grand chantier <br>en préparation ?</h2>
+        <div class="reveal">
+          <p>Volumes importants, approvisionnement régulier, tarifs adaptés : parlons de votre projet.</p>
+          <a href="contact.html#quote" class="btn btn-white magnetic">Obtenir un devis gratuit <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Galerie</span>
+            <h2 class="reveal">Sur le terrain</h2>
+          </div>
+          <a href="galerie.html" class="more-link reveal">Toute la galerie <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="gallery" id="gallery" data-limit="5"></div>
+      </div>
+    </section>

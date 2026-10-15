@@ -1,0 +1,43 @@
+  <!-- Préchargement (1re visite) / transition entre pages -->
+  <div id="preloader">
+    <img src="assets/img/logo-light.png" alt="SICAR SARL">
+    <div class="pl-count"><span id="pl-num">0</span>%</div>
+    <div class="pl-curtain"><i></i><i></i><i></i></div>
+  </div>
+  <div id="leave" aria-hidden="true"><i></i><i></i><i></i><img src="assets/img/logo-light.png" alt=""></div>
+  <div id="progress"></div>
+  <div id="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-ring"><em></em></span></div>
+
+  <div class="topbar">
+    <div class="container topbar-in">
+      <span><svg class="ic"><use href="#i-clock"/></svg><span data-site="hours"></span></span>
+      <span class="tb-right">
+        <a data-site-href="tel" data-site="phone"></a>
+        <a data-site-href="mailto" data-site="email"></a>
+      </span>
+    </div>
+  </div>
+
+  <header id="header">
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="SICAR SARL — accueil">
+        <img class="logo-light" src="assets/img/logo-light.png" alt="SICAR SARL">
+        <img class="logo-color" src="assets/img/logo.png" alt="">
+      </a>
+      <nav id="menu">
+        <a href="index.html" data-nav="accueil">Accueil</a>
+        <a href="entreprise.html" data-nav="entreprise">Entreprise</a>
+        <a href="produits.html" data-nav="produits">Produits</a>
+        <a href="production.html" data-nav="production">Production</a>
+        <a href="calculateur.html" data-nav="calculateur">Calculateur</a>
+        <a href="galerie.html" data-nav="galerie">Galerie</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+        <div class="menu-foot"><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a></div>
+      </nav>
+      <a href="contact.html#quote" class="basket-btn" id="basket-btn" aria-label="Ma demande de devis"><svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b></a>
+      <a href="contact.html#quote" class="btn btn-sm nav-cta magnetic">Devis gratuit <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <button id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">

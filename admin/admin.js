@@ -112,6 +112,7 @@
         <div class="acts">
           <button class="btn-icon" data-act="up" data-i="${i}" title="Monter">↑</button>
           <button class="btn-icon" data-act="down" data-i="${i}" title="Descendre">↓</button>
+          <a class="btn-icon" href="../produit.html?id=${encodeURIComponent(p.id)}" target="_blank" title="Voir la page du produit" style="display:grid;place-items:center;text-decoration:none;color:inherit">👁</a>
           <button class="btn-icon" data-act="edit" data-i="${i}" title="Modifier">✎</button>
           <button class="btn-icon" data-act="del" data-i="${i}" title="Supprimer">🗑</button>
         </div>

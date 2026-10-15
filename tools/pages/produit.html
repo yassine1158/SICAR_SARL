@@ -1,0 +1,43 @@
+<!--{"title":"Fiche produit — SICAR SARL","desc":"Fiche produit SICAR SARL : granulométrie, usages, disponibilité. Demandez votre devis gratuit.","page":"produits"}-->
+    <section class="product-page">
+      <div class="container pp" id="pp">
+        <div class="pp-media">
+          <div class="pp-img mask-reveal"><img id="pp-img" alt=""></div>
+          <span class="pp-grain" id="pp-grain"></span>
+        </div>
+        <div class="pp-info">
+          <nav class="crumbs crumbs-dark split-up" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><a href="produits.html">Produits</a><span id="pp-crumb">…</span></nav>
+          <span class="badge pp-badge split-up" id="pp-cat"></span>
+          <h1 id="pp-title" class="pp-title">Chargement…</h1>
+          <p class="pp-desc split-up" id="pp-desc"></p>
+          <dl class="pm-specs split-up" id="pp-specs"></dl>
+          <div class="pp-uses split-up"><span class="pp-label">Usages recommandés</span><div class="tags" id="pp-tags"></div></div>
+          <div class="pm-order split-up">
+            <label class="num"><span>Quantité</span><input type="number" id="pp-qty" min="1" value="10"><i id="pp-unit">m³</i></label>
+            <button class="btn" id="pp-add"><svg class="ic"><use href="#i-plus"/></svg> Ajouter au devis</button>
+          </div>
+          <div class="pp-links split-up">
+            <a class="pm-wa" id="pp-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Commander sur WhatsApp</a>
+            <a class="pp-calc" href="calculateur.html"><svg class="ic"><use href="#i-calc"/></svg> Calculer la quantité</a>
+          </div>
+        </div>
+      </div>
+      <div class="container pp-missing" id="pp-missing" hidden>
+        <h1>Produit introuvable</h1>
+        <p class="muted">Ce produit n'existe plus ou a été renommé.</p>
+        <a href="produits.html" class="btn">Voir tous les produits <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <section class="section products-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">À découvrir aussi</span>
+            <h2 class="reveal">Autres produits</h2>
+          </div>
+          <a href="produits.html" class="more-link reveal">Tout le catalogue <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="products" id="products" data-limit="3" data-exclude-current></div>
+      </div>
+    </section>

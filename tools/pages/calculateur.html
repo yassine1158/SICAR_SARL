@@ -1,0 +1,61 @@
+<!--{"title":"Calculateur de granulats — Béton, dalle, remblai | SICAR SARL","desc":"Calculez gratuitement les quantités de sable et de gravier pour votre béton, dalle, fondation ou remblai, puis demandez votre devis SICAR SARL.","page":"calculateur"}-->
+    <section class="page-hero">
+      <div class="ph-bg" style="background-image:url(assets/img/chargeuse.jpg)"></div>
+      <div class="grain"></div>
+      <div class="container ph-in">
+        <nav class="crumbs split-up" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>Calculateur</span></nav>
+        <h1 data-split>Calculateur</h1>
+        <p class="split-up">Estimez en quelques secondes les quantités de granulats pour votre ouvrage.</p>
+      </div>
+      <span class="ph-num">04</span>
+    </section>
+
+    <section class="section calc-sec">
+      <div class="container calc">
+        <div class="calc-intro">
+          <span class="eyebrow reveal">Outil gratuit</span>
+          <h2 class="reveal">Combien <br>vous <em>faut-il&nbsp;?</em></h2>
+          <p class="reveal">Entrez les dimensions de votre ouvrage : nous estimons les quantités de granulats nécessaires. Ajoutez-les ensuite à votre demande de devis en un clic.</p>
+          <ul class="calc-notes reveal">
+            <li>Béton : dosage courant ≈ 400 L de sable + 800 L de gravier par m³.</li>
+            <li>Remblai / couche de forme : +25 % pour le compactage.</li>
+            <li>Estimation indicative — notre équipe confirme avec vous.</li>
+          </ul>
+        </div>
+        <form class="calc-box reveal" id="calc" onsubmit="return false">
+          <div class="seg" id="calc-mode">
+            <button type="button" class="on" data-mode="beton">Béton (dalle, fondation)</button>
+            <button type="button" data-mode="remblai">Remblai / route</button>
+          </div>
+          <div class="calc-dims">
+            <label class="num"><span>Longueur</span><input type="number" name="L" value="10" min="0" step="0.1"><i>m</i></label>
+            <label class="num"><span>Largeur</span><input type="number" name="W" value="5" min="0" step="0.1"><i>m</i></label>
+            <label class="num"><span>Épaisseur</span><input type="number" name="H" value="15" min="0" step="1"><i>cm</i></label>
+          </div>
+          <div class="calc-total">Volume de l'ouvrage <b id="calc-vol">7,5 m³</b></div>
+          <div class="calc-res" id="calc-res"></div>
+          <button type="button" class="btn btn-block" id="calc-add"><svg class="ic"><use href="#i-plus"/></svg> Ajouter à ma demande de devis</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section how-sec">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow reveal">Mode d'emploi</span>
+          <h2 class="reveal">Trois étapes <em>simples</em></h2>
+        </div>
+        <div class="how">
+          <div class="how-step reveal"><b>1</b><h3>Mesurez</h3><p>Relevez la longueur, la largeur et l'épaisseur de votre ouvrage.</p></div>
+          <div class="how-step reveal"><b>2</b><h3>Choisissez</h3><p>Sélectionnez le type d'ouvrage et les granulats proposés.</p></div>
+          <div class="how-step reveal"><b>3</b><h3>Envoyez</h3><p>Ajoutez au devis et envoyez votre demande par WhatsApp ou e-mail.</p></div>
+        </div>
+        <div class="presets reveal">
+          <span class="pp-label">Exemples rapides</span>
+          <button type="button" data-preset="4,3,12,beton">Dalle de cour 4 × 3 m</button>
+          <button type="button" data-preset="10,8,15,beton">Dalle de maison 10 × 8 m</button>
+          <button type="button" data-preset="40,0.4,40,beton">Semelle filante 40 m</button>
+          <button type="button" data-preset="100,6,30,remblai">Route 100 × 6 m</button>
+        </div>
+      </div>
+    </section>

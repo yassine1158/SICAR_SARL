@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nos produits — Gravier, sable et moellons | SICAR SARL</title>
+  <meta name="description" content="Catalogue SICAR SARL : sable de concassage, graviers calibrés, tout-venant et moellons. Ajoutez vos produits et demandez un devis gratuit.">
+  <meta name="theme-color" content="#121418">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SICAR SARL">
+  <meta property="og:title" content="Nos produits — Gravier, sable et moellons | SICAR SARL">
+  <meta property="og:description" content="Catalogue SICAR SARL : sable de concassage, graviers calibrés, tout-venant et moellons. Ajoutez vos produits et demandez un devis gratuit.">
+  <meta property="og:image" content="assets/img/station-concassage.jpg">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>try{if(sessionStorage.getItem("sicar_seen"))document.documentElement.classList.add("seen")}catch(e){}</script>
+</head>
+<body data-page="produits">
+  <!-- Préchargement (1re visite) / transition entre pages -->
+  <div id="preloader">
+    <img src="assets/img/logo-light.png" alt="SICAR SARL">
+    <div class="pl-count"><span id="pl-num">0</span>%</div>
+    <div class="pl-curtain"><i></i><i></i><i></i></div>
+  </div>
+  <div id="leave" aria-hidden="true"><i></i><i></i><i></i><img src="assets/img/logo-light.png" alt=""></div>
+  <div id="progress"></div>
+  <div id="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-ring"><em></em></span></div>
+
+  <div class="topbar">
+    <div class="container topbar-in">
+      <span><svg class="ic"><use href="#i-clock"/></svg><span data-site="hours"></span></span>
+      <span class="tb-right">
+        <a data-site-href="tel" data-site="phone"></a>
+        <a data-site-href="mailto" data-site="email"></a>
+      </span>
+    </div>
+  </div>
+
+  <header id="header">
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="SICAR SARL — accueil">
+        <img class="logo-light" src="assets/img/logo-light.png" alt="SICAR SARL">
+        <img class="logo-color" src="assets/img/logo.png" alt="">
+      </a>
+      <nav id="menu">
+        <a href="index.html" data-nav="accueil">Accueil</a>
+        <a href="entreprise.html" data-nav="entreprise">Entreprise</a>
+        <a href="produits.html" data-nav="produits">Produits</a>
+        <a href="production.html" data-nav="production">Production</a>
+        <a href="calculateur.html" data-nav="calculateur">Calculateur</a>
+        <a href="galerie.html" data-nav="galerie">Galerie</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+        <div class="menu-foot"><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a></div>
+      </nav>
+      <a href="contact.html#quote" class="basket-btn" id="basket-btn" aria-label="Ma demande de devis"><svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b></a>
+      <a href="contact.html#quote" class="btn btn-sm nav-cta magnetic">Devis gratuit <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <button id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="ph-bg" style="background-image:url(assets/img/stock-sable.jpg)"></div>
+      <div class="grain"></div>
+      <div class="container ph-in">
+        <nav class="crumbs split-up" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>Produits</span></nav>
+        <h1 data-split>Nos granulats</h1>
+        <p class="split-up">Gravier, sable et roche concassés sur notre site, pour le béton, les fondations, les routes et les enrochements.</p>
+      </div>
+      <span class="ph-num">02</span>
+    </section>
+
+    <section class="section products-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Catalogue</span>
+            <h2 class="reveal" id="cat-title">Tous les produits</h2>
+          </div>
+          <div class="filters reveal" id="filters">
+            <span class="pill-bg"></span>
+            <button class="active" data-filter="all">Tous</button>
+            <button data-filter="gravier">Gravier</button>
+            <button data-filter="sable">Sable</button>
+            <button data-filter="roche">Roche</button>
+          </div>
+        </div>
+        <div class="products" id="products">
+          <div class="card sk-card"></div><div class="card sk-card"></div><div class="card sk-card"></div>
+        </div>
+        <p class="products-hint reveal"><svg class="ic"><use href="#i-info"/></svg> Cliquez sur un produit pour voir sa fiche, ou sur <b>+</b> pour l'ajouter à votre demande de devis.</p>
+      </div>
+    </section>
+
+    <section class="calc-promo">
+      <div class="container cp-in">
+        <div class="cp-icon reveal"><svg class="ic"><use href="#i-calc"/></svg></div>
+        <div class="reveal">
+          <h2>Vous ne savez pas quelle quantité commander ?</h2>
+          <p>Notre calculateur estime les m³ nécessaires selon les dimensions de votre ouvrage.</p>
+        </div>
+        <a href="calculateur.html" class="btn btn-white magnetic reveal">Calculer mes besoins <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="contact.html#quote" class="big-cta">
+      <span class="bc-track"><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+    <div class="container foot">
+      <div class="foot-brand">
+        <img src="assets/img/logo-light.png" alt="SICAR SARL">
+        <p>Production et vente de granulats : gravier, sable et moellons pour le bâtiment, les routes et le génie civil.</p>
+      </div>
+      <div><h4>Navigation</h4><a href="entreprise.html">Entreprise</a><a href="produits.html">Produits</a><a href="production.html">Production</a><a href="calculateur.html">Calculateur</a><a href="galerie.html">Galerie</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
+      <div><h4>Produits</h4><div id="foot-products"></div></div>
+      <div><h4>Contact</h4><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a><span data-site="address"></span><span data-site="hours"></span></div>
+    </div>
+    <div class="container foot-bottom">
+      <span>© <span id="year"></span> SICAR SARL — Société Ivoirienne des Carrières</span>
+      <a href="admin/" class="admin-link" data-no-transition>Administration</a>
+    </div>
+    <div class="foot-flag"><i></i><i></i><i></i></div>
+  </footer>
+
+  <a id="wa" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+  <button id="totop" aria-label="Haut de page"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18"/></svg><span>↑</span></button>
+  <div id="lightbox"><button class="lb-close" aria-label="Fermer">×</button><button class="lb-prev" aria-label="Précédent">‹</button><img alt=""><span class="lb-count"></span><button class="lb-next" aria-label="Suivant">›</button></div>
+  <div id="toast" role="status"></div>
+
+  <!-- Icônes -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M6 3.5h12v17H6z M9 8h6M9 12h6M9 16h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24"><path d="M5 3h14v18H5z M8 6.5h8v3H8z M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5M12 7.5v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 20 9.5 8l4 6.5L16 11l5 9z M8 12.5l1.5 1.5 1.5-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2.8 20 6v6c0 4.6-3.3 8-8 9.2C7.3 20 4 16.6 4 12V6z M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3.5v2.5h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18M7 3v18M12 3v18M17 3v18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock2" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2M17 3l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 11 6 7.5l3 1 3-2 3.5 1 3.5-1L21.5 11M5 12l4.5 4.5a1.5 1.5 0 0 0 2.1 0L17 11M8 15l-1.5 1.5M11 17.5l-1 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M3 17h18M4.5 17a7.5 7.5 0 0 1 15 0M10 9.8V6h4v3.8M12 6v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.8 6.8l1.4-2.2 4.3 1.7V19a1.9 1.9 0 0 1-2 1.9A16.5 16.5 0 0 1 3.1 5.5 1.9 1.9 0 0 1 5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5.5h18v13H3z M3.5 6l8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 4.9c2 .9 2.9.9 3.9.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4z"/></symbol>
+  </svg>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

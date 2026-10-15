@@ -1,0 +1,58 @@
+<!--{"title":"Contact et devis gratuit — SICAR SARL","desc":"Contactez SICAR SARL et envoyez votre demande de devis pour du gravier, du sable ou des moellons par WhatsApp ou e-mail.","page":"contact"}-->
+    <section class="page-hero">
+      <div class="ph-bg" style="background-image:url(assets/img/chargeuse.jpg)"></div>
+      <div class="grain"></div>
+      <div class="container ph-in">
+        <nav class="crumbs split-up" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>Contact</span></nav>
+        <h1 data-split>Contact &amp; devis</h1>
+        <p class="split-up">Une question, une commande ? Nous vous répondons rapidement.</p>
+      </div>
+      <span class="ph-num">07</span>
+    </section>
+
+    <section class="quick-contact">
+      <div class="container qc">
+        <a class="qc-card reveal" data-site-href="tel" data-qc="phone"><svg class="ic"><use href="#i-phone"/></svg><small>Appelez-nous</small><b data-site="phone"></b></a>
+        <a class="qc-card wa-card reveal" id="qc-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><small>WhatsApp</small><b>Écrire un message</b></a>
+        <a class="qc-card reveal" data-site-href="mailto" data-qc="email"><svg class="ic"><use href="#i-mail"/></svg><small>E-mail</small><b data-site="email"></b></a>
+      </div>
+    </section>
+
+    <section class="section contact-sec">
+      <div class="container contact">
+        <div class="contact-info">
+          <span class="eyebrow reveal">Devis gratuit</span>
+          <h2 class="reveal">Demandez <br>votre <em>devis</em></h2>
+          <p class="reveal">Indiquez les produits et quantités souhaités, nous vous répondons rapidement.</p>
+          <ul class="info-list">
+            <li class="reveal"><svg class="ic"><use href="#i-pin"/></svg><div><small>Adresse</small><span data-site="address"></span></div></li>
+            <li class="reveal"><svg class="ic"><use href="#i-clock"/></svg><div><small>Horaires</small><span data-site="hours"></span></div></li>
+          </ul>
+          <a href="faq.html" class="more-link more-light reveal">Consulter les questions fréquentes <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <form id="quote" class="quote reveal" novalidate>
+          <div class="quote-head"><h3>Demande de devis</h3></div>
+          <div class="q-items">
+            <div class="q-items-head"><span>Produits demandés</span><button type="button" class="link" id="q-clear">Tout retirer</button></div>
+            <ul id="q-list"></ul>
+            <div class="q-add">
+              <label class="field"><select id="q-product"></select><span>Ajouter un produit</span></label>
+              <label class="field q-qty"><input id="q-qty" type="number" min="1" placeholder=" " value="10"><span>Quantité</span></label>
+              <button type="button" class="btn btn-dark btn-square" id="q-add" aria-label="Ajouter"><svg class="ic"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+          <div class="row">
+            <label class="field"><input name="nom" required placeholder=" " autocomplete="name"><span>Nom / Entreprise</span></label>
+            <label class="field"><input name="tel" type="tel" required placeholder=" " autocomplete="tel"><span>Téléphone</span></label>
+          </div>
+          <label class="field"><input name="lieu" placeholder=" "><span>Lieu de livraison (ville / chantier)</span></label>
+          <label class="field"><textarea name="msg" rows="3" placeholder=" "></textarea><span>Message (optionnel)</span></label>
+          <p class="form-err" id="form-err" role="alert"></p>
+          <div class="row">
+            <button class="btn btn-wa" type="submit" data-via="whatsapp"><svg class="ic"><use href="#i-wa"/></svg> Envoyer par WhatsApp</button>
+            <button class="btn btn-dark" type="submit" data-via="email"><svg class="ic"><use href="#i-mail"/></svg> Envoyer par e-mail</button>
+          </div>
+        </form>
+      </div>
+      <div class="container map reveal"><iframe id="map" title="Localisation SICAR SARL" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </section>
