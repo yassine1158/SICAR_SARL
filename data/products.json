@@ -1,7 +1,7 @@
 [
   {
     "id": "sable-concassage-0-4",
-    "name": "Sable de concassage 0/4",
+    "name": "Sable de concassage 0/5",
     "category": "sable",
     "granulometrie": "0/5 mm",
     "description": "Sable issu du concassage de roche granitique. Idéal pour béton, mortier, enduits et parpaings.",
@@ -18,9 +18,9 @@
   },
   {
     "id": "gravier-5-15",
-    "name": "Gravier 5/15",
+    "name": "Gravier 5/10",
     "category": "gravier",
-    "granulometrie": "5/15 mm",
+    "granulometrie": "5/10 mm",
     "description": "Gravillon concassé calibré, très utilisé pour les bétons de structure et les dalles.",
     "usages": [
       "Béton armé",
@@ -35,9 +35,9 @@
   },
   {
     "id": "gravier-15-25",
-    "name": "Gravier 15/25",
+    "name": "Gravier 10/15",
     "category": "gravier",
-    "granulometrie": "15/25 mm",
+    "granulometrie": "10/15 mm",
     "description": "Gravier concassé pour fondations, gros béton et ouvrages de génie civil.",
     "usages": [
       "Fondations",
@@ -52,9 +52,9 @@
   },
   {
     "id": "tout-venant-0-31-5",
-    "name": "Tout-venant 0/31.5",
+    "name": "Tout-venant 15/25",
     "category": "gravier",
-    "granulometrie": "0/31.5 mm",
+    "granulometrie": "15/25 mm",
     "description": "Grave non traitée pour couches de forme, de fondation et de base des chaussées.",
     "usages": [
       "Routes",
