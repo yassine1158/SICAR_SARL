@@ -3,9 +3,13 @@
     "id": "sable-concassage-0-4",
     "name": "Sable de concassage 0/4",
     "category": "sable",
-    "granulometrie": "0/4 mm",
+    "granulometrie": "0/5 mm",
     "description": "Sable issu du concassage de roche granitique. Idéal pour béton, mortier, enduits et parpaings.",
-    "usages": ["Béton", "Mortier", "Parpaings"],
+    "usages": [
+      "Béton",
+      "Mortier",
+      "Parpaings"
+    ],
     "price": "",
     "unit": "m³",
     "image": "assets/img/stock-sable.jpg",
@@ -18,7 +22,11 @@
     "category": "gravier",
     "granulometrie": "5/15 mm",
     "description": "Gravillon concassé calibré, très utilisé pour les bétons de structure et les dalles.",
-    "usages": ["Béton armé", "Dalles", "Poteaux"],
+    "usages": [
+      "Béton armé",
+      "Dalles",
+      "Poteaux"
+    ],
     "price": "",
     "unit": "m³",
     "image": "assets/img/chargeuse.jpg",
@@ -31,7 +39,11 @@
     "category": "gravier",
     "granulometrie": "15/25 mm",
     "description": "Gravier concassé pour fondations, gros béton et ouvrages de génie civil.",
-    "usages": ["Fondations", "Gros béton", "Génie civil"],
+    "usages": [
+      "Fondations",
+      "Gros béton",
+      "Génie civil"
+    ],
     "price": "",
     "unit": "m³",
     "image": "assets/img/convoyeur.jpg",
@@ -44,7 +56,11 @@
     "category": "gravier",
     "granulometrie": "0/31.5 mm",
     "description": "Grave non traitée pour couches de forme, de fondation et de base des chaussées.",
-    "usages": ["Routes", "Plates-formes", "Remblais"],
+    "usages": [
+      "Routes",
+      "Plates-formes",
+      "Remblais"
+    ],
     "price": "",
     "unit": "m³",
     "image": "assets/img/station-concassage.jpg",
@@ -57,7 +73,11 @@
     "category": "roche",
     "granulometrie": "> 100 mm",
     "description": "Blocs de roche pour enrochements, murs de soutènement et fondations cyclopéennes.",
-    "usages": ["Enrochement", "Soutènement", "Gabions"],
+    "usages": [
+      "Enrochement",
+      "Soutènement",
+      "Gabions"
+    ],
     "price": "",
     "unit": "tonne",
     "image": "assets/img/extraction.jpg",
