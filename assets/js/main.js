@@ -221,7 +221,8 @@
      Demande de devis (partagée entre les pages)
      ========================================================= */
   let basket = store.get("sicar_devis", []);
-  const unitOf = (name) => (products.find((p) => p.name === name) || {}).unit || "m³";
+  const short = (u) => (!u || u === "tonne" ? "t" : u);
+  const unitOf = (name) => short((products.find((p) => p.name === name) || {}).unit);
   const qList = $("#q-list");
   const saveBasket = () => { store.set("sicar_devis", basket); renderBasket(); };
   const addToBasket = (name, qty) => {
@@ -352,7 +353,7 @@
         <p>${esc(p.description)}</p>
         <div class="tags">${(p.usages || []).map((u) => `<span>${esc(u)}</span>`).join("")}</div>
         <div class="card-foot">
-          ${p.price ? `<span class="price">${esc(p.price)} <small>FCFA / ${esc(p.unit || "m³")}</small></span>` : '<span class="price price-quote">Prix sur devis</span>'}
+          ${p.price ? `<span class="price">${esc(p.price)} <small>FCFA / ${esc(p.unit || "tonne")}</small></span>` : '<span class="price price-quote">Prix sur devis</span>'}
           <span class="order"><svg class="ic"><use href="#i-arrow"/></svg></span>
         </div>
       </div>
@@ -429,12 +430,12 @@
     $("#pp-specs").innerHTML = [
       ["Granulométrie", esc(p.granulometrie || "—")],
       ["Catégorie", esc(p.category)],
-      ["Prix", p.price ? `${esc(p.price)} FCFA / ${esc(p.unit || "m³")}` : "Sur devis"],
+      ["Prix", p.price ? `${esc(p.price)} FCFA / ${esc(p.unit || "tonne")}` : "Sur devis"],
       ["Disponibilité", p.available === false ? "Rupture" : "En stock", p.available === false ? "ko" : "ok"],
     ].map(([k, v, c]) => `<div><dt>${k}</dt><dd class="${c || ""}">${v}</dd></div>`).join("");
     $("#pp-tags").innerHTML = (p.usages || []).map((u) => `<span>${esc(u)}</span>`).join("") || '<span>Tous usages</span>';
-    $("#pp-unit").textContent = p.unit || "m³";
-    const setWa = () => ($("#pp-wa").href = `https://wa.me/${site.whatsapp || ""}?text=${encodeURIComponent(`Bonjour SICAR SARL, je souhaite un devis pour : ${p.name} — ${$("#pp-qty").value} ${p.unit || "m³"}.`)}`);
+    $("#pp-unit").textContent = short(p.unit);
+    const setWa = () => ($("#pp-wa").href = `https://wa.me/${site.whatsapp || ""}?text=${encodeURIComponent(`Bonjour SICAR SARL, je souhaite un devis pour : ${p.name} — ${$("#pp-qty").value} ${short(p.unit)}.`)}`);
     setWa(); on("#pp-qty", "input", setWa); if (onSiteReady) onSiteReady.push(setWa);
     on("#pp-add", "click", () => { addToBasket(p.name, $("#pp-qty").value); addedToast(`<b>${esc(p.name)}</b> ajouté à votre devis.`); });
     observe($("#pp"));
@@ -455,11 +456,11 @@
     $("#pm-specs").innerHTML = [
       ["Granulométrie", esc(p.granulometrie || "—")],
       ["Catégorie", esc(p.category)],
-      ["Prix", p.price ? `${esc(p.price)} FCFA / ${esc(p.unit || "m³")}` : "Sur devis"],
+      ["Prix", p.price ? `${esc(p.price)} FCFA / ${esc(p.unit || "tonne")}` : "Sur devis"],
       ["Disponibilité", p.available === false ? "Rupture" : "En stock", p.available === false ? "ko" : "ok"],
     ].map(([k, v, c]) => `<div><dt>${k}</dt><dd class="${c || ""}">${v}</dd></div>`).join("");
     $("#pm-tags").innerHTML = (p.usages || []).map((u) => `<span>${esc(u)}</span>`).join("");
-    $("#pm-unit").textContent = p.unit || "m³"; $("#pm-qty").value = 10;
+    $("#pm-unit").textContent = short(p.unit); $("#pm-qty").value = 10;
     const setPmWa = () => ($("#pm-wa").href = `https://wa.me/${site.whatsapp || ""}?text=${encodeURIComponent(`Bonjour SICAR SARL, je souhaite un devis pour : ${p.name}.`)}`);
     setPmWa(); if (onSiteReady) onSiteReady.push(setPmWa);
     pm.classList.add("open"); pm.setAttribute("aria-hidden", "false"); lock("pm", true);

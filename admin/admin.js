@@ -138,7 +138,7 @@
   const dlg = $("#dlg"), pf = $("#pform"); let editing = -1, editImg = "";
   function openForm(i) {
     editing = i;
-    const p = i >= 0 ? products[i] : { category: "gravier", unit: "m³", available: true, usages: [], image: "assets/img/stock-sable.jpg" };
+    const p = i >= 0 ? products[i] : { category: "gravier", unit: "tonne", available: true, usages: [], image: "assets/img/stock-sable.jpg" };
     $("#dlg-title").textContent = i >= 0 ? "Modifier le produit" : "Nouveau produit";
     for (const k of ["name", "category", "granulometrie", "price", "unit", "description"]) pf.elements[k].value = p[k] || "";
     pf.elements.usages.value = (p.usages || []).join(", ");

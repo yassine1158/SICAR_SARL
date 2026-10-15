@@ -11,7 +11,7 @@
       "Parpaings"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/stock-sable.jpg",
     "available": true,
     "featured": true
@@ -28,7 +28,7 @@
       "Préfabrication"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/chargeuse.jpg",
     "available": true,
     "featured": true
@@ -45,7 +45,7 @@
       "Poteaux"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/convoyeur.jpg",
     "available": true,
     "featured": true
@@ -62,7 +62,7 @@
       "Génie civil"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/station-concassage.jpg",
     "available": true,
     "featured": false
@@ -79,7 +79,7 @@
       "Propreté"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/convoyeur.jpg",
     "available": true,
     "featured": false
@@ -96,7 +96,7 @@
       "Assainissement"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/station-concassage.jpg",
     "available": true,
     "featured": false
@@ -113,7 +113,7 @@
       "Empierrement"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/extraction.jpg",
     "available": true,
     "featured": false
@@ -130,7 +130,7 @@
       "Parkings"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/station-concassage.jpg",
     "available": true,
     "featured": false
@@ -147,7 +147,7 @@
       "Pistes"
     ],
     "price": "",
-    "unit": "m³",
+    "unit": "tonne",
     "image": "assets/img/extraction.jpg",
     "available": true,
     "featured": false
