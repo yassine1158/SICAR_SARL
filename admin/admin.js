@@ -166,7 +166,7 @@
   });
 
   /* ---------- informations ---------- */
-  const SF = ["tagline", "heroTitle", "heroText", "about", "phone", "whatsapp", "email", "address", "hours"];
+  const SF = ["tagline", "heroTitle", "heroText", "about", "phone", "whatsapp", "email", "address", "hours", "mapQuery"];
   function renderSettings() {
     const f = $("#settings"); SF.forEach((k) => (f.elements[k].value = site[k] || ""));
     $("#stats-edit").innerHTML = (site.stats || []).map((s, i) => `<div class="stat-row">
