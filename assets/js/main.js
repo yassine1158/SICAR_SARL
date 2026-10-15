@@ -380,7 +380,6 @@
     if (tk) { const names = list.map((p) => `<span>${esc(p.name)}</span>`).join(""); tk.innerHTML = names + names + names + names; }
     if ($("#filters")) setupFilters(list);
     if ($("#pp")) renderProductPage(list);
-    if ($("#calc")) calc();
     renderBasket();
   }).catch(() => { const b = $("#products"); if (b) b.innerHTML = '<p class="muted">Impossible de charger les produits.</p>'; });
 
@@ -430,43 +429,6 @@
     setWa(); on("#pp-qty", "input", setWa); setTimeout(setWa, 1500);
     on("#pp-add", "click", () => { addToBasket(p.name, $("#pp-qty").value); addedToast(`<b>${esc(p.name)}</b> ajouté à votre devis.`); });
     observe($("#pp"));
-  }
-
-  /* =========================================================
-     Calculateur
-     ========================================================= */
-  const calcForm = $("#calc"); let mode = "beton", calcRows = [];
-  function calc() {
-    const v = (k) => Math.max(0, parseFloat(calcForm.elements[k].value) || 0);
-    const vol = v("L") * v("W") * v("H") / 100;
-    $("#calc-vol").textContent = fmt(vol) + " m³";
-    const by = (cats) => products.filter((p) => cats.includes(p.category));
-    const pick = (list, re) => (list.find((p) => re.test(p.name)) || list[0] || {}).name;
-    const prev = Object.fromEntries($$("#calc-res select").map((s) => [s.dataset.role, s.value]));
-    calcRows = (mode === "beton"
-      ? [{ role: "sable", label: "Sable", list: by(["sable"]), qty: vol * 0.4 }, { role: "gravier", label: "Gravier", list: by(["gravier"]), qty: vol * 0.8 }]
-      : [{ role: "remblai", label: "Granulat", list: by(["gravier", "roche", "sable"]), qty: vol * 1.25 }]).filter((r) => r.list.length);
-    $("#calc-res").innerHTML = calcRows.map((r) => {
-      const sel = prev[r.role] || pick(r.list, r.role === "remblai" ? /tout|venant/i : /./);
-      return `<div class="res-row"><div><small>${r.label}</small><select data-role="${r.role}">${r.list.map((p) => `<option ${p.name === sel ? "selected" : ""}>${esc(p.name)}</option>`).join("")}</select></div><b>${fmt(r.qty)} <small>m³</small></b></div>`;
-    }).join("") || '<p class="muted">Les produits seront bientôt disponibles.</p>';
-  }
-  if (calcForm) {
-    const setMode = (m) => { mode = m; $$("#calc-mode button").forEach((x) => x.classList.toggle("on", x.dataset.mode === m)); };
-    $$("#calc-mode button").forEach((b) => (b.onclick = () => { setMode(b.dataset.mode); calcForm.elements.H.value = mode === "beton" ? 15 : 30; calc(); }));
-    calcForm.addEventListener("input", (e) => { if (e.target.name) calc(); });
-    $$("[data-preset]").forEach((b) => (b.onclick = () => {
-      const [L, W, H, m] = b.dataset.preset.split(",");
-      setMode(m); Object.assign(calcForm.elements.L, { value: L }); calcForm.elements.W.value = W; calcForm.elements.H.value = H; calc();
-      calcForm.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-      calcForm.animate?.([{ boxShadow: "0 0 0 0 rgba(227,6,19,.6)" }, { boxShadow: "0 0 0 18px rgba(227,6,19,0)" }], { duration: 900, delay: 400 });
-    }));
-    on("#calc-add", "click", () => {
-      let n = 0;
-      $$("#calc-res select").forEach((s, i) => { if (calcRows[i].qty > 0) { addToBasket(s.value, calcRows[i].qty); n++; } });
-      if (n) addedToast(`${n} produit${n > 1 ? "s" : ""} ajouté${n > 1 ? "s" : ""}.`);
-    });
-    calc();
   }
 
   /* =========================================================

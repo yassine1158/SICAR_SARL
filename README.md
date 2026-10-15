@@ -40,7 +40,6 @@ Chaque clic sur **Publier** crée un commit dans le dépôt ; GitHub Pages met l
 | Produits (catalogue, filtres `produits.html#gravier`, `#sable`, `#roche`) | `produits.html` |
 | Fiche d'un produit | `produit.html?id=<id du produit>` (une page par produit, générée automatiquement) |
 | Production | `production.html` |
-| Calculateur de granulats | `calculateur.html` |
 | Galerie | `galerie.html` |
 | FAQ | `faq.html` |
 | Contact & devis | `contact.html` |

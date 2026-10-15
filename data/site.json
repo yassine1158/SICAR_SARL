@@ -42,7 +42,7 @@
   "faq": [
     {
       "q": "Comment passer commande ?",
-      "a": "Ajoutez les produits souhaités à votre demande de devis (depuis le catalogue ou le calculateur), puis envoyez-la par WhatsApp ou par e-mail. Vous pouvez aussi nous appeler directement."
+      "a": "Ajoutez les produits souhaités à votre demande de devis (depuis le catalogue ou la fiche de chaque produit), puis envoyez-la par WhatsApp ou par e-mail. Vous pouvez aussi nous appeler directement."
     },
     {
       "q": "Livrez-vous sur les chantiers ?",
@@ -54,7 +54,7 @@
     },
     {
       "q": "Quels granulats choisir pour un béton ?",
-      "a": "Pour un béton courant, on associe un sable de concassage et un gravier (par exemple 5/10 ou 10/15). Notre calculateur vous donne une estimation des quantités ; notre équipe peut vous conseiller selon votre ouvrage."
+      "a": "Pour un béton courant, on associe un sable de concassage et un gravier (par exemple 5/10 ou 10/15). Notre équipe peut vous conseiller sur les calibres et les quantités selon votre ouvrage."
     },
     {
       "q": "Quelle est la différence entre m³ et tonne ?",
