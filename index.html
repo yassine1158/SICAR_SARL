@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SICAR SARL — Société Ivoirienne des Carrières | Gravier, Sable, Moellons</title>
+  <meta name="description" content="SICAR SARL, Société Ivoirienne des Carrières : production et vente de gravier, sable de concassage, tout-venant et moellons en Côte d'Ivoire.">
+  <meta property="og:title" content="SICAR SARL — Société Ivoirienne des Carrières">
+  <meta property="og:description" content="Gravier, sable et moellons de qualité pour vos chantiers.">
+  <meta property="og:image" content="assets/img/station-concassage.jpg">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="preloader"><img src="assets/img/logo.png" alt="SICAR SARL"><div class="bar"><span></span></div></div>
+
+  <header id="header">
+    <div class="container nav">
+      <a href="#accueil" class="brand"><img src="assets/img/logo.png" alt="SICAR SARL"></a>
+      <nav id="menu">
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#produits">Produits</a>
+        <a href="#processus">Processus</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#contact" class="btn btn-sm">Demander un devis</a>
+      </nav>
+      <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <section id="accueil" class="hero">
+    <div class="hero-slides">
+      <div class="slide active" style="background-image:url(assets/img/station-concassage.jpg)"></div>
+      <div class="slide" style="background-image:url(assets/img/extraction.jpg)"></div>
+      <div class="slide" style="background-image:url(assets/img/convoyeur.jpg)"></div>
+      <div class="slide" style="background-image:url(assets/img/stock-sable.jpg)"></div>
+    </div>
+    <canvas id="dust"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="eyebrow reveal" data-site="tagline">Société Ivoirienne des Carrières</span>
+      <h1 class="reveal" data-site="heroTitle">Granulats de qualité pour bâtir la Côte d'Ivoire</h1>
+      <p class="reveal" data-site="heroText"></p>
+      <div class="hero-actions reveal">
+        <a href="#produits" class="btn">Nos produits</a>
+        <a href="#contact" class="btn btn-ghost">Demander un devis</a>
+      </div>
+    </div>
+    <a href="#apropos" class="scroll-down" aria-label="Défiler"><span></span></a>
+    <div class="flag-line"><i></i><i></i><i></i></div>
+  </section>
+
+  <section id="apropos" class="section">
+    <div class="container about">
+      <div class="about-img reveal-left">
+        <img src="assets/img/extraction.jpg" alt="Extraction en carrière" loading="lazy">
+        <img class="float" src="assets/img/chargeuse.jpg" alt="Chargeuse sur stock" loading="lazy">
+      </div>
+      <div class="about-text reveal-right">
+        <span class="eyebrow">Qui sommes-nous</span>
+        <h2>De la roche au chantier, <em>nous maîtrisons tout.</em></h2>
+        <p data-site="about"></p>
+        <ul class="checks">
+          <li>Carrière et station de concassage propres</li>
+          <li>Granulats calibrés et contrôlés</li>
+          <li>Parc d'engins pour chargement rapide</li>
+          <li>Livraison possible sur vos chantiers</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container stats" id="stats"></div>
+  </section>
+
+  <section id="produits" class="section section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Notre catalogue</span>
+        <h2>Gravier, sable &amp; roche</h2>
+        <p>Des granulats pour chaque usage : béton, fondations, routes et enrochements.</p>
+      </div>
+      <div class="filters reveal" id="filters">
+        <button class="active" data-filter="all">Tous</button>
+        <button data-filter="gravier">Gravier</button>
+        <button data-filter="sable">Sable</button>
+        <button data-filter="roche">Roche</button>
+      </div>
+      <div class="products" id="products"><p class="muted">Chargement…</p></div>
+    </div>
+  </section>
+
+  <section id="processus" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Notre savoir-faire</span>
+        <h2>Comment nous produisons</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><b>01</b><h3>Extraction</h3><p>Abattage et extraction de la roche sur notre carrière par nos pelles hydrauliques.</p></div>
+        <div class="step reveal"><b>02</b><h3>Concassage</h3><p>Réduction de la roche en station de concassage primaire et secondaire.</p></div>
+        <div class="step reveal"><b>03</b><h3>Criblage</h3><p>Tri par cribles vibrants pour obtenir des calibres précis et réguliers.</p></div>
+        <div class="step reveal"><b>04</b><h3>Stockage &amp; livraison</h3><p>Mise en stock par calibre, chargement de vos camions et livraison.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="parallax" style="background-image:url(assets/img/convoyeur.jpg)">
+    <div class="parallax-overlay"></div>
+    <div class="container parallax-content reveal">
+      <h2>Un grand chantier en vue ?</h2>
+      <p>Volumes importants, approvisionnement régulier : parlons de votre projet.</p>
+      <a href="#contact" class="btn">Obtenir un devis gratuit</a>
+    </div>
+  </section>
+
+  <section id="galerie" class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">En images</span>
+        <h2>Notre site d'exploitation</h2>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-dark">
+    <div class="container contact">
+      <div class="contact-info reveal-left">
+        <span class="eyebrow">Contact</span>
+        <h2>Demandez votre devis</h2>
+        <p>Indiquez le produit et la quantité souhaitée, nous revenons vers vous rapidement.</p>
+        <ul class="info-list">
+          <li><span>📞</span><a data-site-href="tel" data-site="phone"></a></li>
+          <li><span>✉️</span><a data-site-href="mailto" data-site="email"></a></li>
+          <li><span>📍</span><span data-site="address"></span></li>
+          <li><span>🕒</span><span data-site="hours"></span></li>
+        </ul>
+      </div>
+      <form id="quote" class="quote reveal-right">
+        <div class="row">
+          <label>Nom / Entreprise<input name="nom" required></label>
+          <label>Téléphone<input name="tel" type="tel" required></label>
+        </div>
+        <div class="row">
+          <label>Produit<select name="produit" id="quote-product"></select></label>
+          <label>Quantité<input name="qte" placeholder="ex : 50 m³"></label>
+        </div>
+        <label>Lieu de livraison<input name="lieu" placeholder="Ville / chantier"></label>
+        <label>Message<textarea name="msg" rows="4"></textarea></label>
+        <div class="row">
+          <button class="btn" type="submit" data-via="whatsapp">Envoyer par WhatsApp</button>
+          <button class="btn btn-ghost" type="submit" data-via="email">Envoyer par e-mail</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <img src="assets/img/logo.png" alt="SICAR SARL">
+      <p>© <span id="year"></span> SICAR SARL — Société Ivoirienne des Carrières. Tous droits réservés.</p>
+      <a href="admin/" class="admin-link">Administration</a>
+    </div>
+  </footer>
+
+  <a id="wa" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30"><path fill="#fff" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 4.9c2 .9 2.9.9 3.9.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+  <button id="totop" aria-label="Haut de page">↑</button>
+
+  <div id="lightbox"><button class="lb-close" aria-label="Fermer">×</button><button class="lb-prev" aria-label="Précédent">‹</button><img alt=""><button class="lb-next" aria-label="Suivant">›</button></div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

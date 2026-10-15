@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Administration — SICAR SARL</title>
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <!-- Connexion -->
+  <section id="login" class="login">
+    <form id="login-form" class="login-box">
+      <img src="../assets/img/logo.png" alt="SICAR SARL">
+      <h1>Espace administration</h1>
+      <p>Connectez-vous avec votre jeton GitHub (accès « Contents : Read and write » sur le dépôt du site).</p>
+      <label>Jeton GitHub<input id="token" type="password" placeholder="github_pat_…" required autocomplete="off"></label>
+      <label class="chk"><input id="remember" type="checkbox" checked> Rester connecté sur cet appareil</label>
+      <button class="btn" type="submit">Se connecter</button>
+      <p id="login-err" class="err"></p>
+      <details>
+        <summary>Comment obtenir un jeton ?</summary>
+        <ol>
+          <li>GitHub → <b>Settings</b> → <b>Developer settings</b> → <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b>.</li>
+          <li>Repository access : <b>Only select repositories</b> → choisir le dépôt du site.</li>
+          <li>Permissions → <b>Contents : Read and write</b>.</li>
+          <li>Générer, copier le jeton et le coller ici.</li>
+        </ol>
+      </details>
+      <a href="../" class="back">← Retour au site</a>
+    </form>
+  </section>
+
+  <!-- Application -->
+  <section id="app" hidden>
+    <header class="top">
+      <img src="../assets/img/logo.png" alt="">
+      <nav class="tabs">
+        <button class="active" data-tab="products">Produits</button>
+        <button data-tab="settings">Informations</button>
+        <button data-tab="gallery">Galerie</button>
+      </nav>
+      <div class="top-actions">
+        <a href="../" target="_blank" class="btn btn-light">Voir le site ↗</a>
+        <button id="logout" class="btn btn-light">Déconnexion</button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <!-- Produits -->
+      <div class="tab" id="tab-products">
+        <div class="bar">
+          <h2>Produits <small id="count"></small></h2>
+          <div>
+            <button id="add" class="btn">+ Ajouter un produit</button>
+            <button id="save-products" class="btn btn-green">Publier les modifications</button>
+          </div>
+        </div>
+        <div id="list" class="list"></div>
+      </div>
+
+      <!-- Infos -->
+      <div class="tab" id="tab-settings" hidden>
+        <div class="bar"><h2>Informations du site</h2><button id="save-settings" class="btn btn-green">Publier les modifications</button></div>
+        <form id="settings" class="panel grid2">
+          <label>Slogan<input name="tagline"></label>
+          <label>Titre principal<input name="heroTitle"></label>
+          <label class="full">Texte d'accueil<textarea name="heroText" rows="2"></textarea></label>
+          <label class="full">À propos<textarea name="about" rows="4"></textarea></label>
+          <label>Téléphone<input name="phone"></label>
+          <label>WhatsApp (format international, chiffres uniquement)<input name="whatsapp" placeholder="2250700000000"></label>
+          <label>E-mail<input name="email" type="email"></label>
+          <label>Adresse<input name="address"></label>
+          <label class="full">Horaires<input name="hours"></label>
+          <fieldset class="full"><legend>Chiffres clés</legend><div id="stats-edit"></div></fieldset>
+        </form>
+      </div>
+
+      <!-- Galerie -->
+      <div class="tab" id="tab-gallery" hidden>
+        <div class="bar">
+          <h2>Galerie photos</h2>
+          <div>
+            <label class="btn">+ Ajouter des photos<input id="gal-up" type="file" accept="image/*" multiple hidden></label>
+            <button id="save-gallery" class="btn btn-green">Publier les modifications</button>
+          </div>
+        </div>
+        <div id="gal" class="gal"></div>
+      </div>
+    </main>
+  </section>
+
+  <!-- Formulaire produit -->
+  <dialog id="dlg">
+    <form id="pform" method="dialog">
+      <h3 id="dlg-title">Produit</h3>
+      <div class="grid2">
+        <label>Nom<input name="name" required placeholder="Gravier 5/15"></label>
+        <label>Catégorie
+          <select name="category"><option value="gravier">Gravier</option><option value="sable">Sable</option><option value="roche">Roche</option></select>
+        </label>
+        <label>Granulométrie<input name="granulometrie" placeholder="5/15 mm"></label>
+        <label>Prix (FCFA) — vide = « sur devis »<input name="price" placeholder="ex : 18 000"></label>
+        <label>Unité<select name="unit"><option>m³</option><option>tonne</option><option>camion</option><option>sac</option></select></label>
+        <label>Usages (séparés par des virgules)<input name="usages" placeholder="Béton, Dalles"></label>
+        <label class="full">Description<textarea name="description" rows="3"></textarea></label>
+        <div class="full img-pick">
+          <img id="pimg" alt="">
+          <div>
+            <label class="btn btn-light">Changer la photo<input id="pfile" type="file" accept="image/*" hidden></label>
+            <p class="hint">La photo est automatiquement redimensionnée.</p>
+          </div>
+        </div>
+        <label class="chk"><input type="checkbox" name="available"> Disponible en stock</label>
+        <label class="chk"><input type="checkbox" name="featured"> Mettre en avant</label>
+      </div>
+      <div class="dlg-actions">
+        <button type="button" id="dlg-cancel" class="btn btn-light">Annuler</button>
+        <button type="submit" class="btn">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast"></div>
+  <div id="busy" hidden><div class="spin"></div><p id="busy-msg">Publication…</p></div>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
