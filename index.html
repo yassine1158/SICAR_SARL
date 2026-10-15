@@ -4,29 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SICAR SARL — Société Ivoirienne des Carrières | Gravier, Sable, Moellons</title>
-  <meta name="description" content="SICAR SARL, Société Ivoirienne des Carrières : production et vente de gravier, sable de concassage, tout-venant et moellons en Côte d'Ivoire. Devis rapide par WhatsApp.">
+  <meta name="description" content="SICAR SARL, Société Ivoirienne des Carrières : production et vente de gravier, sable de concassage, tout-venant et moellons en Côte d&#x27;Ivoire. Devis rapide par WhatsApp.">
   <meta name="theme-color" content="#121418">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="SICAR SARL — Société Ivoirienne des Carrières">
-  <meta property="og:description" content="Gravier, sable et moellons de qualité pour vos chantiers.">
+  <meta property="og:site_name" content="SICAR SARL">
+  <meta property="og:title" content="SICAR SARL — Société Ivoirienne des Carrières | Gravier, Sable, Moellons">
+  <meta property="og:description" content="SICAR SARL, Société Ivoirienne des Carrières : production et vente de gravier, sable de concassage, tout-venant et moellons en Côte d&#x27;Ivoire. Devis rapide par WhatsApp.">
   <meta property="og:image" content="assets/img/station-concassage.jpg">
   <link rel="icon" href="assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>try{if(sessionStorage.getItem("sicar_seen"))document.documentElement.classList.add("seen")}catch(e){}</script>
 </head>
-<body>
-  <!-- Préchargement -->
+<body data-page="accueil">
+  <!-- Préchargement (1re visite) / transition entre pages -->
   <div id="preloader">
     <img src="assets/img/logo-light.png" alt="SICAR SARL">
     <div class="pl-count"><span id="pl-num">0</span>%</div>
     <div class="pl-curtain"><i></i><i></i><i></i></div>
   </div>
+  <div id="leave" aria-hidden="true"><i></i><i></i><i></i><img src="assets/img/logo-light.png" alt=""></div>
   <div id="progress"></div>
   <div id="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-ring"><em></em></span></div>
 
-  <!-- Barre d'infos -->
   <div class="topbar">
     <div class="container topbar-in">
       <span><svg class="ic"><use href="#i-clock"/></svg><span data-site="hours"></span></span>
@@ -39,270 +41,179 @@
 
   <header id="header">
     <div class="container nav">
-      <a href="#accueil" class="brand" aria-label="SICAR SARL — accueil">
+      <a href="index.html" class="brand" aria-label="SICAR SARL — accueil">
         <img class="logo-light" src="assets/img/logo-light.png" alt="SICAR SARL">
         <img class="logo-color" src="assets/img/logo.png" alt="">
       </a>
       <nav id="menu">
-        <a href="#apropos">Entreprise</a>
-        <a href="#produits">Produits</a>
-        <a href="#calculateur">Calculateur</a>
-        <a href="#processus">Production</a>
-        <a href="#galerie">Galerie</a>
-        <a href="#contact">Contact</a>
+        <a href="index.html" data-nav="accueil">Accueil</a>
+        <a href="entreprise.html" data-nav="entreprise">Entreprise</a>
+        <a href="produits.html" data-nav="produits">Produits</a>
+        <a href="production.html" data-nav="production">Production</a>
+        <a href="calculateur.html" data-nav="calculateur">Calculateur</a>
+        <a href="galerie.html" data-nav="galerie">Galerie</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
         <div class="menu-foot"><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a></div>
       </nav>
-      <button class="basket-btn" id="basket-btn" aria-label="Ma demande de devis"><svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b></button>
-      <a href="#contact" class="btn btn-sm nav-cta magnetic">Devis gratuit <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a href="contact.html#quote" class="basket-btn" id="basket-btn" aria-label="Ma demande de devis"><svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b></a>
+      <a href="contact.html#quote" class="btn btn-sm nav-cta magnetic">Devis gratuit <svg class="ic"><use href="#i-arrow"/></svg></a>
       <button id="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="accueil" class="hero">
-    <div class="hero-media">
-      <div class="slide active" style="background-image:url(assets/img/station-concassage.jpg)"></div>
-      <div class="slide" style="background-image:url(assets/img/extraction.jpg)"></div>
-      <div class="slide" style="background-image:url(assets/img/convoyeur.jpg)"></div>
-      <div class="slide" style="background-image:url(assets/img/stock-sable.jpg)"></div>
-    </div>
-    <canvas id="dust"></canvas>
-    <div class="hero-shade"></div>
-    <div class="grain"></div>
-
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <span class="kicker split-up"><i class="flag"><b></b><b></b><b></b></i><span data-site="tagline">Société Ivoirienne des Carrières</span></span>
-        <h1 class="hero-title" data-site="heroTitle" data-split>Granulats de qualité pour bâtir la Côte d'Ivoire</h1>
-        <p class="hero-text split-up" data-site="heroText"></p>
-        <div class="hero-actions split-up">
-          <a href="#produits" class="btn magnetic">Voir nos produits <svg class="ic"><use href="#i-arrow"/></svg></a>
-          <a href="#calculateur" class="btn btn-outline magnetic"><svg class="ic"><use href="#i-calc"/></svg> Calculer mes besoins</a>
-        </div>
+  <main id="main">
+    <section class="hero">
+      <div class="hero-media">
+        <div class="slide active" style="background-image:url(assets/img/station-concassage.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/extraction.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/convoyeur.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/stock-sable.jpg)"></div>
       </div>
+      <canvas id="dust"></canvas>
+      <div class="hero-shade"></div>
+      <div class="grain"></div>
 
-      <aside class="hero-card split-up">
-        <div class="hc-head"><span class="live"></span>Production en cours</div>
-        <ul id="hero-products"><li class="sk"></li><li class="sk"></li><li class="sk"></li></ul>
-        <a href="#contact" class="hc-link">Commander maintenant <svg class="ic"><use href="#i-arrow"/></svg></a>
-      </aside>
-    </div>
-
-    <div class="hero-bottom container">
-      <div class="slide-nav" id="slide-nav"></div>
-      <a href="#apropos" class="scroll-cue">Défiler <span></span></a>
-    </div>
-  </section>
-
-  <!-- Bandeau défilant -->
-  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
-
-  <!-- À PROPOS -->
-  <section id="apropos" class="section about-sec">
-    <span class="bg-word" data-speed="-0.15">CARRIÈRE</span>
-    <div class="container about">
-      <div class="about-media">
-        <div class="mask-reveal main-img"><img src="assets/img/extraction.jpg" alt="Extraction de roche en carrière" loading="lazy"></div>
-        <div class="mask-reveal sub-img" data-speed="0.08"><img src="assets/img/chargeuse.jpg" alt="Chargeuse sur stock de granulats" loading="lazy"></div>
-        <div class="seal">
-          <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
-            <text><textPath href="#circ">SOCIÉTÉ IVOIRIENNE DES CARRIÈRES • SICAR SARL • </textPath></text></svg>
-          <img src="assets/img/favicon.png" alt="">
-        </div>
-      </div>
-      <div class="about-text">
-        <span class="eyebrow reveal">L'entreprise</span>
-        <h2 class="reveal">De la roche brute <br>au <em>chantier fini.</em></h2>
-        <p class="lead reveal" data-site="about"></p>
-        <div class="features">
-          <div class="feat reveal"><svg class="ic"><use href="#i-mountain"/></svg><div><h4>Carrière propre</h4><p>Extraction maîtrisée sur notre gisement.</p></div></div>
-          <div class="feat reveal"><svg class="ic"><use href="#i-gear"/></svg><div><h4>Station de concassage</h4><p>Concassage et criblage sur site.</p></div></div>
-          <div class="feat reveal"><svg class="ic"><use href="#i-check"/></svg><div><h4>Calibres contrôlés</h4><p>Granulométrie régulière et fiable.</p></div></div>
-          <div class="feat reveal"><svg class="ic"><use href="#i-truck"/></svg><div><h4>Chargement &amp; livraison</h4><p>Parc d'engins prêt à charger.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CHIFFRES -->
-  <section class="stats-band">
-    <div class="container stats" id="stats"></div>
-  </section>
-
-  <!-- PRODUITS -->
-  <section id="produits" class="section products-sec">
-    <div class="container">
-      <div class="head-row">
-        <div>
-          <span class="eyebrow reveal">Catalogue</span>
-          <h2 class="reveal">Nos granulats</h2>
-        </div>
-        <div class="filters reveal" id="filters">
-          <span class="pill-bg"></span>
-          <button class="active" data-filter="all">Tous</button>
-          <button data-filter="gravier">Gravier</button>
-          <button data-filter="sable">Sable</button>
-          <button data-filter="roche">Roche</button>
-        </div>
-      </div>
-      <div class="products" id="products">
-        <div class="card sk-card"></div><div class="card sk-card"></div><div class="card sk-card"></div>
-      </div>
-      <p class="products-hint reveal"><svg class="ic"><use href="#i-info"/></svg> Cliquez sur un produit pour voir sa fiche, ou sur <b>+</b> pour l'ajouter à votre demande de devis.</p>
-    </div>
-  </section>
-
-  <!-- CALCULATEUR -->
-  <section id="calculateur" class="section calc-sec">
-    <div class="container calc">
-      <div class="calc-intro">
-        <span class="eyebrow reveal">Outil gratuit</span>
-        <h2 class="reveal">Combien <br>vous <em>faut-il&nbsp;?</em></h2>
-        <p class="reveal">Entrez les dimensions de votre ouvrage : nous estimons les quantités de granulats nécessaires. Ajoutez-les ensuite à votre demande de devis en un clic.</p>
-        <ul class="calc-notes reveal">
-          <li>Béton : dosage courant ≈ 400 L de sable + 800 L de gravier par m³.</li>
-          <li>Remblai / couche de forme : +25 % pour le compactage.</li>
-          <li>Estimation indicative — notre équipe confirme avec vous.</li>
-        </ul>
-      </div>
-      <form class="calc-box reveal" id="calc" onsubmit="return false">
-        <div class="seg" id="calc-mode">
-          <button type="button" class="on" data-mode="beton">Béton (dalle, fondation)</button>
-          <button type="button" data-mode="remblai">Remblai / route</button>
-        </div>
-        <div class="calc-dims">
-          <label class="num"><span>Longueur</span><input type="number" name="L" value="10" min="0" step="0.1"><i>m</i></label>
-          <label class="num"><span>Largeur</span><input type="number" name="W" value="5" min="0" step="0.1"><i>m</i></label>
-          <label class="num"><span>Épaisseur</span><input type="number" name="H" value="15" min="0" step="1"><i>cm</i></label>
-        </div>
-        <div class="calc-total">Volume de l'ouvrage <b id="calc-vol">7,5 m³</b></div>
-        <div class="calc-res" id="calc-res"></div>
-        <button type="button" class="btn btn-block" id="calc-add"><svg class="ic"><use href="#i-plus"/></svg> Ajouter à ma demande de devis</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- SECTEURS -->
-  <section class="section sectors-sec">
-    <div class="container">
-      <div class="head-row">
-        <div>
-          <span class="eyebrow reveal">Secteurs</span>
-          <h2 class="reveal">Pour tous <br>vos chantiers</h2>
-        </div>
-        <p class="muted reveal head-note">Entreprises du BTP, promoteurs, collectivités ou particuliers : nous fournissons les granulats adaptés à chaque ouvrage.</p>
-      </div>
-      <div class="sectors" id="sectors">
-        <a href="#produits" class="sector reveal" data-img="assets/img/chargeuse.jpg"><b>01</b><h3>Bâtiment</h3><p>Béton, dalles, poteaux, parpaings, enduits.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
-        <a href="#produits" class="sector reveal" data-img="assets/img/station-concassage.jpg"><b>02</b><h3>Routes &amp; VRD</h3><p>Couches de forme, de fondation et de base.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
-        <a href="#produits" class="sector reveal" data-img="assets/img/extraction.jpg"><b>03</b><h3>Génie civil</h3><p>Ouvrages d'art, enrochements, soutènements.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
-        <a href="#produits" class="sector reveal" data-img="assets/img/stock-sable.jpg"><b>04</b><h3>Particuliers</h3><p>Construction de maison, cour, clôture.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-    <div class="sector-float" id="sector-float"><img alt=""></div>
-  </section>
-
-  <!-- PROCESSUS -->
-  <section id="processus" class="section process-sec">
-    <div class="container">
-      <div class="center-head">
-        <span class="eyebrow reveal">Production</span>
-        <h2 class="reveal">Quatre étapes, <em>une qualité constante</em></h2>
-      </div>
-      <div class="timeline" id="timeline">
-        <div class="tl-line"><span id="tl-fill"></span></div>
-        <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-mountain"/></svg></div><b>01</b><h3>Extraction</h3><p>Abattage et extraction de la roche sur la carrière par nos pelles hydrauliques.</p></div>
-        <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-gear"/></svg></div><b>02</b><h3>Concassage</h3><p>Réduction de la roche en station de concassage primaire et secondaire.</p></div>
-        <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-grid"/></svg></div><b>03</b><h3>Criblage</h3><p>Tri par cribles vibrants pour des calibres précis et réguliers.</p></div>
-        <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-truck"/></svg></div><b>04</b><h3>Stockage &amp; livraison</h3><p>Mise en stock par calibre, chargement et livraison sur chantier.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="cta-bg" data-speed="0.25" style="background-image:url(assets/img/convoyeur.jpg)"></div>
-    <div class="container cta-in">
-      <h2 class="reveal">Un grand chantier <br>en préparation ?</h2>
-      <div class="reveal">
-        <p>Volumes importants, approvisionnement régulier, tarifs adaptés : parlons de votre projet.</p>
-        <a href="#contact" class="btn btn-white magnetic">Obtenir un devis gratuit <svg class="ic"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERIE -->
-  <section id="galerie" class="section">
-    <div class="container">
-      <div class="head-row">
-        <div>
-          <span class="eyebrow reveal">Galerie</span>
-          <h2 class="reveal">Sur le terrain</h2>
-        </div>
-        <p class="muted reveal head-note">Notre carrière, notre station de concassage et nos engins en action.</p>
-      </div>
-      <div class="gallery" id="gallery"></div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section faq-sec">
-    <div class="container faq-wrap">
-      <div>
-        <span class="eyebrow reveal">Questions fréquentes</span>
-        <h2 class="reveal">Vous vous <br><em>demandez…</em></h2>
-        <p class="muted reveal">Une autre question ? Écrivez-nous sur WhatsApp, nous répondons rapidement.</p>
-        <a class="btn btn-wa reveal" id="faq-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Poser ma question</a>
-      </div>
-      <div class="faq" id="faq-list"></div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section contact-sec">
-    <div class="container contact">
-      <div class="contact-info">
-        <span class="eyebrow reveal">Contact</span>
-        <h2 class="reveal">Demandez <br>votre <em>devis</em></h2>
-        <p class="reveal">Indiquez les produits et quantités souhaités, nous vous répondons rapidement.</p>
-        <ul class="info-list">
-          <li class="reveal"><svg class="ic"><use href="#i-phone"/></svg><div><small>Téléphone</small><a data-site-href="tel" data-site="phone"></a></div></li>
-          <li class="reveal"><svg class="ic"><use href="#i-mail"/></svg><div><small>E-mail</small><a data-site-href="mailto" data-site="email"></a></div></li>
-          <li class="reveal"><svg class="ic"><use href="#i-pin"/></svg><div><small>Adresse</small><span data-site="address"></span></div></li>
-          <li class="reveal"><svg class="ic"><use href="#i-clock"/></svg><div><small>Horaires</small><span data-site="hours"></span></div></li>
-        </ul>
-      </div>
-      <form id="quote" class="quote reveal" novalidate>
-        <div class="quote-head"><h3>Demande de devis</h3><span class="steps-ind"><i class="on"></i><i></i></span></div>
-
-        <div class="q-items">
-          <div class="q-items-head"><span>Produits demandés</span><button type="button" class="link" id="q-clear">Tout retirer</button></div>
-          <ul id="q-list"></ul>
-          <div class="q-add">
-            <label class="field"><select id="q-product"></select><span>Ajouter un produit</span></label>
-            <label class="field q-qty"><input id="q-qty" type="number" min="1" placeholder=" " value="10"><span>Quantité</span></label>
-            <button type="button" class="btn btn-dark btn-square" id="q-add" aria-label="Ajouter"><svg class="ic"><use href="#i-plus"/></svg></button>
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="kicker split-up"><i class="flag"><b></b><b></b><b></b></i><span data-site="tagline">Société Ivoirienne des Carrières</span></span>
+          <h1 class="hero-title" data-site="heroTitle" data-split>Granulats de qualité pour bâtir la Côte d'Ivoire</h1>
+          <p class="hero-text split-up" data-site="heroText"></p>
+          <div class="hero-actions split-up">
+            <a href="produits.html" class="btn magnetic">Voir nos produits <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a href="calculateur.html" class="btn btn-outline magnetic"><svg class="ic"><use href="#i-calc"/></svg> Calculer mes besoins</a>
           </div>
         </div>
+        <aside class="hero-card split-up">
+          <div class="hc-head"><span class="live"></span>Production en cours</div>
+          <ul id="hero-products"><li class="sk"></li><li class="sk"></li><li class="sk"></li></ul>
+          <a href="contact.html#quote" class="hc-link">Commander maintenant <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </aside>
+      </div>
 
-        <div class="row">
-          <label class="field"><input name="nom" required placeholder=" " autocomplete="name"><span>Nom / Entreprise</span></label>
-          <label class="field"><input name="tel" type="tel" required placeholder=" " autocomplete="tel"><span>Téléphone</span></label>
+      <div class="hero-bottom container">
+        <div class="slide-nav" id="slide-nav"></div>
+        <a href="#apropos" class="scroll-cue">Défiler <span></span></a>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+    <section id="apropos" class="section about-sec">
+      <span class="bg-word" data-speed="-0.15">CARRIÈRE</span>
+      <div class="container about">
+        <div class="about-media">
+          <div class="mask-reveal main-img"><img src="assets/img/extraction.jpg" alt="Extraction de roche en carrière" loading="lazy"></div>
+          <div class="mask-reveal sub-img" data-speed="0.08"><img src="assets/img/chargeuse.jpg" alt="Chargeuse sur stock de granulats" loading="lazy"></div>
+          <div class="seal">
+            <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+              <text><textPath href="#circ">SOCIÉTÉ IVOIRIENNE DES CARRIÈRES • SICAR SARL • </textPath></text></svg>
+            <img src="assets/img/favicon.png" alt="">
+          </div>
         </div>
-        <label class="field"><input name="lieu" placeholder=" "><span>Lieu de livraison (ville / chantier)</span></label>
-        <label class="field"><textarea name="msg" rows="3" placeholder=" "></textarea><span>Message (optionnel)</span></label>
-        <p class="form-err" id="form-err" role="alert"></p>
-        <div class="row">
-          <button class="btn btn-wa" type="submit" data-via="whatsapp"><svg class="ic"><use href="#i-wa"/></svg> Envoyer par WhatsApp</button>
-          <button class="btn btn-dark" type="submit" data-via="email"><svg class="ic"><use href="#i-mail"/></svg> Envoyer par e-mail</button>
+        <div class="about-text">
+          <span class="eyebrow reveal">L'entreprise</span>
+          <h2 class="reveal">De la roche brute <br>au <em>chantier fini.</em></h2>
+          <p class="lead reveal" data-site="about"></p>
+          <div class="features">
+            <div class="feat reveal"><svg class="ic"><use href="#i-mountain"/></svg><div><h4>Carrière propre</h4><p>Extraction maîtrisée sur notre gisement.</p></div></div>
+            <div class="feat reveal"><svg class="ic"><use href="#i-gear"/></svg><div><h4>Station de concassage</h4><p>Concassage et criblage sur site.</p></div></div>
+          </div>
+          <a href="entreprise.html" class="more-link reveal">Découvrir l'entreprise <svg class="ic"><use href="#i-arrow"/></svg></a>
         </div>
-      </form>
-    </div>
-    <div class="container map reveal"><iframe id="map" title="Localisation SICAR SARL" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-  </section>
+      </div>
+    </section>
+
+    <section class="stats-band"><div class="container stats" id="stats"></div></section>
+
+    <section class="section products-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Catalogue</span>
+            <h2 class="reveal">Nos granulats</h2>
+          </div>
+          <a href="produits.html" class="more-link reveal">Tout le catalogue <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="products" id="products" data-limit="3">
+          <div class="card sk-card"></div><div class="card sk-card"></div><div class="card sk-card"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calc-promo">
+      <div class="container cp-in">
+        <div class="cp-icon reveal"><svg class="ic"><use href="#i-calc"/></svg></div>
+        <div class="reveal">
+          <h2>Combien vous faut-il ?</h2>
+          <p>Calculez en quelques secondes les quantités de sable et de gravier pour votre dalle, vos fondations ou votre route.</p>
+        </div>
+        <a href="calculateur.html" class="btn btn-white magnetic reveal">Ouvrir le calculateur <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <section class="section sectors-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Secteurs</span>
+            <h2 class="reveal">Pour tous <br>vos chantiers</h2>
+          </div>
+          <p class="muted reveal head-note">Entreprises du BTP, promoteurs, collectivités ou particuliers : nous fournissons les granulats adaptés à chaque ouvrage.</p>
+        </div>
+        <div class="sectors" id="sectors">
+          <a href="produits.html" class="sector reveal" data-img="assets/img/chargeuse.jpg"><b>01</b><h3>Bâtiment</h3><p>Béton, dalles, poteaux, parpaings, enduits.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/station-concassage.jpg"><b>02</b><h3>Routes &amp; VRD</h3><p>Couches de forme, de fondation et de base.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/extraction.jpg"><b>03</b><h3>Génie civil</h3><p>Ouvrages d'art, enrochements, soutènements.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/stock-sable.jpg"><b>04</b><h3>Particuliers</h3><p>Construction de maison, cour, clôture.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="sector-float" id="sector-float"><img alt=""></div>
+    </section>
+
+    <section class="section process-sec">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow reveal">Production</span>
+          <h2 class="reveal">Quatre étapes, <em>une qualité constante</em></h2>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="tl-line"><span id="tl-fill"></span></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-mountain"/></svg></div><b>01</b><h3>Extraction</h3><p>Abattage et extraction de la roche sur la carrière.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-gear"/></svg></div><b>02</b><h3>Concassage</h3><p>Réduction de la roche en station de concassage.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-grid"/></svg></div><b>03</b><h3>Criblage</h3><p>Tri par cribles pour des calibres précis.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-truck"/></svg></div><b>04</b><h3>Livraison</h3><p>Stockage par calibre, chargement et livraison.</p></div>
+        </div>
+        <div class="center-more reveal"><a href="production.html" class="more-link">Découvrir notre production <svg class="ic"><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-bg" data-speed="0.25" style="background-image:url(assets/img/convoyeur.jpg)"></div>
+      <div class="container cta-in">
+        <h2 class="reveal">Un grand chantier <br>en préparation ?</h2>
+        <div class="reveal">
+          <p>Volumes importants, approvisionnement régulier, tarifs adaptés : parlons de votre projet.</p>
+          <a href="contact.html#quote" class="btn btn-white magnetic">Obtenir un devis gratuit <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Galerie</span>
+            <h2 class="reveal">Sur le terrain</h2>
+          </div>
+          <a href="galerie.html" class="more-link reveal">Toute la galerie <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="gallery" id="gallery" data-limit="5"></div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <a href="#contact" class="big-cta">
+    <a href="contact.html#quote" class="big-cta">
       <span class="bc-track"><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre projet</span><svg class="ic"><use href="#i-arrow"/></svg></span>
     </a>
     <div class="container foot">
@@ -310,41 +221,19 @@
         <img src="assets/img/logo-light.png" alt="SICAR SARL">
         <p>Production et vente de granulats : gravier, sable et moellons pour le bâtiment, les routes et le génie civil.</p>
       </div>
-      <div><h4>Navigation</h4><a href="#apropos">Entreprise</a><a href="#produits">Produits</a><a href="#calculateur">Calculateur</a><a href="#galerie">Galerie</a><a href="#faq">FAQ</a></div>
+      <div><h4>Navigation</h4><a href="entreprise.html">Entreprise</a><a href="produits.html">Produits</a><a href="production.html">Production</a><a href="calculateur.html">Calculateur</a><a href="galerie.html">Galerie</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
       <div><h4>Produits</h4><div id="foot-products"></div></div>
-      <div><h4>Contact</h4><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a><span data-site="address"></span></div>
+      <div><h4>Contact</h4><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a><span data-site="address"></span><span data-site="hours"></span></div>
     </div>
     <div class="container foot-bottom">
       <span>© <span id="year"></span> SICAR SARL — Société Ivoirienne des Carrières</span>
-      <a href="admin/" class="admin-link">Administration</a>
+      <a href="admin/" class="admin-link" data-no-transition>Administration</a>
     </div>
     <div class="foot-flag"><i></i><i></i><i></i></div>
   </footer>
 
   <a id="wa" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
   <button id="totop" aria-label="Haut de page"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18"/></svg><span>↑</span></button>
-
-  <!-- Fiche produit -->
-  <div id="pmodal" class="pmodal" aria-hidden="true">
-    <div class="pm-backdrop" data-close></div>
-    <article class="pm-panel" role="dialog" aria-modal="true" aria-labelledby="pm-title">
-      <button class="pm-close" data-close aria-label="Fermer">×</button>
-      <div class="pm-img"><img id="pm-img" alt=""><span class="pm-grain" id="pm-grain"></span></div>
-      <div class="pm-body">
-        <span class="badge" id="pm-cat"></span>
-        <h3 id="pm-title"></h3>
-        <p id="pm-desc"></p>
-        <dl class="pm-specs" id="pm-specs"></dl>
-        <div class="tags" id="pm-tags"></div>
-        <div class="pm-order">
-          <label class="num"><span>Quantité</span><input type="number" id="pm-qty" min="1" value="10"><i id="pm-unit">m³</i></label>
-          <button class="btn" id="pm-add"><svg class="ic"><use href="#i-plus"/></svg> Ajouter au devis</button>
-        </div>
-        <a class="pm-wa" id="pm-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Commander directement sur WhatsApp</a>
-      </div>
-    </article>
-  </div>
-
   <div id="lightbox"><button class="lb-close" aria-label="Fermer">×</button><button class="lb-prev" aria-label="Précédent">‹</button><img alt=""><span class="lb-count"></span><button class="lb-next" aria-label="Suivant">›</button></div>
   <div id="toast" role="status"></div>
 
@@ -352,7 +241,6 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
-    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><path d="M6 3.5h12v17H6z M9 8h6M9 12h6M9 16h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
     <symbol id="i-calc" viewBox="0 0 24 24"><path d="M5 3h14v18H5z M8 6.5h8v3H8z M8.5 13h.01M12 13h.01M15.5 13h.01M8.5 17h.01M12 17h.01M15.5 17h.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -362,6 +250,9 @@
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2.8 20 6v6c0 4.6-3.3 8-8 9.2C7.3 20 4 16.6 4 12V6z M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
     <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3.5v2.5h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
     <symbol id="i-grid" viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18M7 3v18M12 3v18M17 3v18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock2" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2M17 3l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 11 6 7.5l3 1 3-2 3.5 1 3.5-1L21.5 11M5 12l4.5 4.5a1.5 1.5 0 0 0 2.1 0L17 11M8 15l-1.5 1.5M11 17.5l-1 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M3 17h18M4.5 17a7.5 7.5 0 0 1 15 0M10 9.8V6h4v3.8M12 6v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.8 6.8l1.4-2.2 4.3 1.7V19a1.9 1.9 0 0 1-2 1.9A16.5 16.5 0 0 1 3.1 5.5 1.9 1.9 0 0 1 5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5.5h18v13H3z M3.5 6l8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>

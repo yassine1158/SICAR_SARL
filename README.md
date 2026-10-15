@@ -27,19 +27,46 @@ La connexion se fait avec un **jeton GitHub** — seul le propriétaire du dép�
 - **Produits** : ajouter / modifier / supprimer / réordonner (nom, catégorie gravier-sable-roche, granulométrie, prix en FCFA ou « sur devis », unité, usages, photo, disponibilité).
 - **Informations** : textes d'accueil, à propos, téléphone, WhatsApp, e-mail, adresse, horaires, chiffres clés.
 - **Galerie** : ajouter, retirer et réordonner les photos.
+- **FAQ** : ajouter, modifier, supprimer et réordonner les questions.
 
 Chaque clic sur **Publier** crée un commit dans le dépôt ; GitHub Pages met le site à jour en 1–2 minutes. Les photos envoyées sont automatiquement redimensionnées.
+
+## Pages
+
+| Page | Fichier |
+|---|---|
+| Accueil | `index.html` |
+| L'entreprise | `entreprise.html` |
+| Produits (catalogue, filtres `produits.html#gravier`, `#sable`, `#roche`) | `produits.html` |
+| Fiche d'un produit | `produit.html?id=<id du produit>` (une page par produit, générée automatiquement) |
+| Production | `production.html` |
+| Calculateur de granulats | `calculateur.html` |
+| Galerie | `galerie.html` |
+| FAQ | `faq.html` |
+| Contact & devis | `contact.html` |
+| Page d'erreur | `404.html` |
 
 ## Structure
 
 ```
-index.html            page publique
-assets/css, assets/js styles et effets (diaporama, particules, apparitions, compteurs, tilt 3D, lightbox)
+*.html                pages du site (générées, voir ci-dessous)
+assets/css, assets/js styles et effets (transitions entre pages, animations, curseur, lightbox…)
 assets/img            photos et logo
 data/products.json    catalogue des produits (modifié par l'admin)
-data/site.json        informations du site et galerie (modifié par l'admin)
+data/site.json        informations, chiffres clés, galerie et FAQ (modifiés par l'admin)
 admin/                espace administration
+tools/                gabarits des pages + générateur
 ```
+
+### Modifier la structure des pages (développeurs)
+
+Le menu, l'en-tête et le pied de page sont communs à toutes les pages. Ils se trouvent dans `tools/partials/`, et le contenu propre à chaque page dans `tools/pages/`. Après une modification, régénérer les pages :
+
+```bash
+python3 tools/build.py
+```
+
+Le contenu courant (produits, textes, photos, FAQ) se modifie depuis l'administration, sans toucher au code.
 
 ## Aperçu local
 
