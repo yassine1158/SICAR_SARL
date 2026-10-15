@@ -74,7 +74,9 @@
     } catch (e) {
       $("#login").hidden = false; $("#app").hidden = true;
       $("#login-err").textContent = e.status === 401 ? "Jeton invalide ou expiré." : e.message;
-      localStorage.removeItem("sicar_token"); sessionStorage.removeItem("sicar_token");
+      // on n'oublie le jeton que s'il est refusé par GitHub (pas sur une simple coupure réseau)
+      if ([401, 403, 404].includes(e.status)) { localStorage.removeItem("sicar_token"); sessionStorage.removeItem("sicar_token"); }
+      else if (!e.status) $("#login-err").textContent = "Connexion impossible. Vérifiez votre accès Internet puis réessayez.";
     } finally { busy(); }
   }
   $("#login-form").addEventListener("submit", (e) => {
@@ -128,6 +130,11 @@
     renderProducts(); markDirty();
   });
 
+  const uniqueId = (name, skip) => {
+    const base = slug(name); let id = base, n = 2;
+    while (products.some((p, i) => i !== skip && p.id === id)) id = `${base}-${n++}`;
+    return id;
+  };
   const dlg = $("#dlg"), pf = $("#pform"); let editing = -1, editImg = "";
   function openForm(i) {
     editing = i;
@@ -151,7 +158,8 @@
   pf.addEventListener("submit", () => {
     const v = (k) => pf.elements[k].value.trim();
     const p = {
-      id: editing >= 0 ? products[editing].id : slug(v("name")) + "-" + Date.now().toString(36),
+      // l'identifiant (adresse de la page produit) suit le nom du produit
+      id: editing >= 0 && products[editing].name === v("name") ? products[editing].id : uniqueId(v("name"), editing),
       name: v("name"), category: v("category"), granulometrie: v("granulometrie"),
       description: v("description"), usages: v("usages").split(",").map((s) => s.trim()).filter(Boolean),
       price: v("price"), unit: v("unit"), image: editImg,
@@ -176,13 +184,18 @@
       <input data-s="${i}" data-k="label" value="${esc(s.label)}" placeholder="Libellé"></div>`).join("");
   }
   $("#settings").addEventListener("input", () => markDirty());
-  $("#save-settings").onclick = () => publish(async () => {
+  // site.json regroupe les onglets Informations, FAQ et Galerie : chaque publication reprend les trois
+  async function saveSite(label, message) {
     const f = $("#settings"); SF.forEach((k) => (site[k] = f.elements[k].value.trim()));
     site.whatsapp = site.whatsapp.replace(/\D/g, "");
     $$("[data-s]").forEach((el) => { const s = site.stats[+el.dataset.s]; s[el.dataset.k] = el.dataset.k === "value" ? Number(el.value) || 0 : el.value; });
-    busy("Publication des informations…");
-    await writeJSON("data/site.json", site, "Mise à jour des informations du site");
-  });
+    site.faq = (site.faq || []).filter((x) => x.q.trim());
+    await publishImages(site.gallery || []);
+    busy(label);
+    await writeJSON("data/site.json", site, message);
+    renderFaq();
+  }
+  $("#save-settings").onclick = () => publish(() => saveSite("Publication des informations…", "Mise à jour des informations du site"));
 
   /* ---------- FAQ ---------- */
   function renderFaq() {
@@ -208,12 +221,7 @@
     renderFaq(); markDirty();
   });
   $("#faq-add").onclick = () => { site.faq.push({ q: "", a: "" }); renderFaq(); markDirty(); $("#faq-edit .faq-item:last-child input").focus(); };
-  $("#save-faq").onclick = () => publish(async () => {
-    site.faq = site.faq.filter((x) => x.q.trim());
-    busy("Publication de la FAQ…");
-    await writeJSON("data/site.json", site, "Mise à jour de la FAQ");
-    renderFaq();
-  });
+  $("#save-faq").onclick = () => publish(() => saveSite("Publication de la FAQ…", "Mise à jour de la FAQ"));
 
   /* ---------- galerie ---------- */
   function renderGallery() {
@@ -236,11 +244,7 @@
     }
     e.target.value = ""; renderGallery(); markDirty();
   };
-  $("#save-gallery").onclick = () => publish(async () => {
-    await publishImages(site.gallery);
-    busy("Publication de la galerie…");
-    await writeJSON("data/site.json", site, "Mise à jour de la galerie");
-  });
+  $("#save-gallery").onclick = () => publish(() => saveSite("Publication de la galerie…", "Mise à jour de la galerie"));
 
   /* ---------- publication ---------- */
   async function publish(fn) {
