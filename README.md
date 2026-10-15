@@ -44,6 +44,13 @@ Chaque clic sur **Publier** crée un commit dans le dépôt ; GitHub Pages met l
 | FAQ | `faq.html` |
 | Contact & devis | `contact.html` |
 | Page d'erreur | `404.html` |
+| **Version téléphone (une seule page)** | `mobile.html` |
+
+### Ordinateur / téléphone
+
+- **Ordinateur et tablette** : site multi-pages (une page par rubrique et par produit).
+- **Téléphone** : site sur **une seule page** (`mobile.html`) ; le menu fait défiler jusqu'à chaque rubrique et les produits s'ouvrent dans un panneau.
+- La bascule est automatique : un téléphone qui ouvre `produits.html` arrive sur `mobile.html#produits`, un ordinateur qui ouvre `mobile.html#galerie` arrive sur `galerie.html`. Les liens partagés fonctionnent donc sur tous les appareils.
 
 ## Structure
 
