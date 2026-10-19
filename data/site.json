@@ -32,7 +32,7 @@
   "address": "Côte d'Ivoire",
   "hours": "Lundi – Samedi : 7h00 – 18h00",
   "mapQuery": "Abidjan, Côte d'Ivoire",
-  "wakilChatUrl": "",
+  "wakilChatUrl": "https://wakil-whatsapp.yassinechaabane72.workers.dev",
   "gallery": [
     "assets/img/station-concassage.jpg",
     "assets/img/extraction.jpg",
