@@ -728,4 +728,6 @@ body.loaded .page-hero h1 .w>span{transform:none}
 .products-hint b{margin:0 2px;vertical-align:-.1em}
 /* le bouton WhatsApp flottant ne doit rien masquer */
 .foot-bottom{padding-right:96px}
+/* assistant Wakil : sa bulle se place au-dessus du bouton WhatsApp */
+.has-wakil #totop{bottom:170px}
 @media (max-width:900px){.scroll-cue{display:none}}

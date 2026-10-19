@@ -268,6 +268,18 @@
   }
   renderBasket();
 
+  /* ---------- assistant Wakil (chat), activé depuis l'administration ---------- */
+  const loadWakilChat = (url) => {
+    if (!/^https:\/\//.test(url || "")) return;
+    const s = document.createElement("script");
+    s.src = url.replace(/\/+$/, "") + "/wakil-chat.js";
+    s.defer = true;
+    // à droite, au-dessus du bouton WhatsApp ; le bouton « haut de page » remonte d'un cran (.has-wakil)
+    Object.assign(s.dataset, { tenant: "sicar", accent: "#e30613", position: "right", offset: "96", teaser: "Besoin de gravier ou de sable ? Posez-moi vos questions." });
+    document.body.appendChild(s);
+    body.classList.add("has-wakil");
+  };
+
   /* =========================================================
      Données du site
      ========================================================= */
@@ -295,6 +307,7 @@
     }
     if ($("#faq-list")) renderFaq(d.faq || []);
     seo(d);
+    loadWakilChat(d.wakilChatUrl);
     onSiteReady.forEach((f) => f()); onSiteReady = null;
     onScroll();
   }).catch(console.error);
